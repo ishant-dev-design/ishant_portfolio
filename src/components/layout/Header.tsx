@@ -3,14 +3,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { cn } from "@/utils/cn";
-import { ArrowRightCircleIcon } from "lucide-react";
-import Logo from "../ui/Logo";
+import TextPressure from "../ui/TextPressure";
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Furry Friends", href: "/pets" },
+  { name: "Resume", href: "/resume" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -19,94 +17,114 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [1, 0.2, 0, 0.8], delay: 0.2 }}
-      className="fixed top-0 w-full flex justify-between z-[500] pointer-events-none"
-    >
-      <div className="flex w-full h-fit p-4 justify-end md:justify-between space-x-2">
-        <div className="w-fit z-[500] transition-all duration-300 rounded-full pointer-events-auto">
-          {/* Desktop Navigation */}
-          <div className="relative pointer-events-auto p-1 space-x-1 hidden md:flex items-center border backdrop-blur-md rounded-full bg-background">
-            <nav className="relative flex">
-              <div className="px-3 py-1 text-md font-bold text-foreground h-8">
-                <Logo className="h-full w-full p-1" />
-              </div>
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "relative px-3 py-1 text-md transition-all rounded-full",
-                    pathname === item.href
-                      ? "bg-primary text-background font-bold"
-                      : "bg-transparent text-foreground"
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
+    <>
+      {/* Menu Button (Fixed Position) */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-4 right-4 z-[1000] overflow-hidden p-2.5 text-black text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
+      >
+        <label className="hamburger">
+          <input type="checkbox" checked={isOpen} readOnly className="hidden" />
+          <svg viewBox="0 0 32 32" className="w-6">
+            <path
+              className="line line-top-bottom fill-background"
+              d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+            ></path>
+            <path className="line" d="M7 16 27 16"></path>
+          </svg>
+        </label>
 
-        {/* Mobile Menu Toggle Button */}
-        <button
-          className={cn(
-            "md:hidden z-[500] p-2.5 rounded-full border pointer-events-auto h-fit bg-background backdrop-blur-lg"
-          )}
-        >
-          <label className="hamburger">
-            <input
-              type="checkbox"
-              checked={isOpen}
-              onChange={() => setIsOpen(!isOpen)}
-              className="hidden"
-            />
-            <svg viewBox="0 0 32 32" className="w-6">
-              <path
-                className="line line-top-bottom"
-                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-              ></path>
-              <path className="line" d="M7 16 27 16"></path>
-            </svg>
-          </label>
-        </button>
-
-        {/* Full-Screen Mobile Navigation Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.8, ease: [1, 0.2, 0, 0.8] }}
-              className="fixed inset-0 h-screen w-screen bg-background/ backdrop-blur-lg flex flex-col pointer-events-auto items-center justify-center z-40"
-            >
-              <motion.div className="relative flex flex-col items-center gap-6">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.href}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 30 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                  >
-                    <Link
-                      href={item.href}
-                      className="text-3xl text-foreground font-semibold"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          )}
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={isOpen ? "CLOSE" : "MENU"}
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
+            exit={{ y: 10 }}
+            transition={{ duration: 0.3 }}
+            className="w-12"
+          >
+            {isOpen ? "CLOSE" : "MENU"}
+          </motion.span>
         </AnimatePresence>
-      </div>
-    </motion.header>
+      </button>
+
+      {/* Fullscreen Navigation Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 bg-accent text-black z-[999] flex flex-col items-center justify-center tracking-tight"
+          >
+            <div className="items-center gap-6 w-full max-w-sm px-6">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Link
+                    href={item.href}
+                    className={`text-foreground w-full`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="w-full">
+                      <TextPressure
+                        className={`${
+                          pathname === item.href
+                            ? "!text-accent bg-[#232121]"
+                            : "!text-[#232121]"
+                        }`}
+                        text={item.name}
+                        flex={true}
+                        alpha={false}
+                        stroke={false}
+                        scale={true}
+                        width={true}
+                        weight={true}
+                        italic={true}
+                        textColor="#ffffff"
+                        strokeColor="#ff0000"
+                      />
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Footer Links */}
+            <motion.div
+              className="absolute bottom-6 left-6 text-xs text-black"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <p className="mb-2">CODEGRID</p>
+              <p>INSTAGRAM →</p>
+              <p>LINKEDIN →</p>
+              <p>BEHANCE →</p>
+              <p>DRIBBBLE →</p>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              className="absolute bottom-6 right-6 text-xs text-black"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <p>INFO@CODEGRID.COM</p>
+              <p>0923 3984 23</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import { PawPrint, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { petdata } from "@/data/petdata";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 const pets = () => {
   return (
@@ -14,23 +15,16 @@ const pets = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex flex-col items-center pt-16"
-      >
-        <PawPrint className="text-primary w-16 h-16 mb-4 animate-bounce" />
-        <h1 className="text-5xl md:text-7xl font-bold text-center text-brown-900">
-          Meet My Adorable Companions
-        </h1>
-        <p className="mt-4 text-lg md:text-xl max-w-3xl text-center text-brown-700">
-          Here are my furry, feathery, and scaly friends who fill my life with
-          joy and fun! 🎉
-        </p>
+      <motion.div className="flex pt-16 md:pt-24 pb-12 justify-center items-center w-full">
+        <AnimatedHeading className="text-3xl md:text-5xl lg:text-8xl text-foreground text-center">
+          Meet My Adorable Companions.
+        </AnimatedHeading>
+        <PawPrint className="text-primary h-16 w-16" />
       </motion.div>
-
+      <p className="mt-4 text-lg md:text-xl max-w-3xl text-center text-brown-700">
+        Here are my furry, feathery, and scaly friends who fill my life with joy
+        and fun!
+      </p>
       {/* Animated Paw Prints */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         {[...Array(10)].map((_, i) => (
@@ -45,7 +39,6 @@ const pets = () => {
           </motion.div>
         ))}
       </div>
-
       {/* Pets Grid */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -63,7 +56,7 @@ const pets = () => {
               delay: index * 0.1,
               ease: "easeInOut",
             }}
-            className="bg-background rounded-3xl shadow-lg p-6 flex flex-col items-center text-center border border-gray-200 relative"
+            className="bg-background rounded-3xl shadow-lg p-6 flex flex-col justify-between items-center text-center border border-gray-200 relative"
           >
             <Image
               src={pet.image}
@@ -84,7 +77,7 @@ const pets = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="absolute top-0 right-0 bg-accent text-brown-900 text-xs font-semibold px-3 py-1 rounded-full mt-2 mr-2 shadow-md"
+                className="bg-accent text-background text-xs font-semibold px-3 py-1 rounded-full mt-4"
               >
                 Fun Fact: {pet.funFact}
               </motion.div>

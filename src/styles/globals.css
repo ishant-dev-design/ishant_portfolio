@@ -6,12 +6,12 @@
 
 :root {
   /* Light Mode (Default) */
-  --color-primary: #1e3a8a; /* Deep Navy Blue */
-  --color-secondary: #60a5fa; /* Sky Blue */
-  --color-accent: #38bdf8; /* Cyan */
-  --color-background: #f5f5f5; /* White */
-  --color-foreground: #0f172a; /* Deep Navy Black */
-  --color-textfield: #ffffff; /* White */
+  --color-primary: #000; /* Deep Charcoal Gray */
+  --color-secondary: #3a3939; /* Slightly Lighter Gray */
+  --color-accent: #758cff; /* Neon Blue-Purple */
+  --color-background: #f5f3f0; /* Soft Off-White */
+  --color-foreground: #232121; /* Dark Gray for Contrast */
+  --color-textfield: #ffffff; /* White for Text Inputs */
 
   /* Typography */
   --font-sans: "Space Grotesk", sans-serif;
@@ -25,12 +25,12 @@
 
 /* Dark Mode Overrides */
 .dark {
-  --color-primary: #60a5fa; /* Sky Blue */
-  --color-secondary: #22b0ec; /* Cyan */
-  --color-accent: #93c5fd; /* Soft Blue */
-  --color-background: #0f172a; /* Deep Navy Black */
-  --color-foreground: #f5f5f5; /* Light Gray */
-  --color-textfield: #3b3b3b; /* Dark Gray */
+  --color-primary: #f5f3f0; /* Soft Off-White (Reversed) */
+  --color-secondary: #d4d0c8; /* Muted Light Gray */
+  --color-accent: #ccff00; /* Neon Yellow-Green */
+  --color-background: #101010; /* Deep Charcoal Gray */
+  --color-foreground: #f5f3f0; /* Soft Off-White */
+  --color-textfield: #000; /* Slightly Lighter Gray */
 }
 
 body {
@@ -52,11 +52,12 @@ body {
 .hamburger svg {
   height: auto;
   transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
 }
 
 .line {
   fill: none;
-  stroke: var(--color-foreground); /* Adaptive Stroke Color */
+  stroke: #232121; /* Adaptive Stroke Color */
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;

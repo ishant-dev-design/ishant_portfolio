@@ -2,7 +2,6 @@
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import ContactForm from "@/components/ui/Contact/ContactForm";
 import FAQSection from "@/components/ui/Contact/FAQSection";
-import NewsletterSignup from "@/components/ui/NewsletterSignup";
 import { motion } from "framer-motion";
 
 export default function Contact() {
@@ -15,7 +14,6 @@ export default function Contact() {
       </motion.div>
       <ContactForm />
       <FAQSection />
-      <NewsletterSignup />
     </motion.div>
   );
 }

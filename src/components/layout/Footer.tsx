@@ -46,11 +46,11 @@ const Footer = memo(() => {
   ];
 
   return (
-    <motion.footer className="relative text-center w-full flex justify-center z-[60]">
+    <motion.footer className="relative text-center w-full flex justify-center z-[60] max-w-7xl mx-auto">
       <motion.div className="flex flex-col w-full bg-background text-foreground rounded-3xl p-3 z-10">
         <motion.div className="flex h-full overflow-hidden w-full">
           <motion.div
-            className="text-[clamp(1rem,14vw,100rem)] text-center w-full flex"
+            className="text-[clamp(1rem,14vw,12rem)] text-center w-full flex text-accent"
             initial="hidden"
             whileInView="visible"
             exit="exit"
@@ -120,21 +120,19 @@ const Footer = memo(() => {
               <motion.div className="px-1">
                 <Headset />
               </motion.div>
-              <motion.p className="px-1">+1-800-123-4567</motion.p>
+              <motion.p className="px-1">+91 97180 22115</motion.p>
             </motion.div>
             <motion.div data-cursor="mail" className="flex mx-3">
               <motion.div className="px-1">
                 <Mailbox />
               </motion.div>
-              <motion.p className="px-1">support@airseatravels.com</motion.p>
+              <motion.p className="px-1">ishant121003@gmail.com</motion.p>
             </motion.div>
           </motion.div>
         </motion.div>
-
         <motion.div className="flex text-nowrap justify-center md:flex-row mt-4 w-full">
           <ToggleTheme />
         </motion.div>
-
         {/* Quick Links */}
         <motion.div className="flex text-nowrap justify-center items-center flex-col md:flex-row mt-4 w-full">
           {[
@@ -155,10 +153,9 @@ const Footer = memo(() => {
             </div>
           ))}
         </motion.div>
-
         {/* Copyright */}
         <motion.p className="mt-3">
-          &copy; 2025 <b>airsea travels</b>. All rights reserved.
+          &copy; 2025 <b>ishant kumar</b>. All rights reserved.
         </motion.p>
       </motion.div>
     </motion.footer>

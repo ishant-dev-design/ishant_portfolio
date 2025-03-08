@@ -14,13 +14,11 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    category: "",
     message: "",
     attachments: [],
   });
 
   const [attachments, setAttachments] = useState<File[]>([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [previewFile, setPreviewFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -58,10 +56,6 @@ const ContactForm = () => {
       alert("Please enter a valid email address.");
       return;
     }
-    if (!formData.category) {
-      alert("Please select a category.");
-      return;
-    }
     if (!formData.message.trim()) {
       alert("Please enter a message.");
       return;
@@ -75,7 +69,6 @@ const ContactForm = () => {
           <h2>📩 Contact Form Submission</h2>
           <p><strong>Name:</strong> ${formData.name}</p>
           <p><strong>Email:</strong> ${formData.email}</p>
-          <p><strong>Category:</strong> ${formData.category}</p>
           <p><strong>Message:</strong></p>
           <p style="border-left: 4px solid #007bff; padding-left: 10px;">${
             formData.message
@@ -161,49 +154,7 @@ const ContactForm = () => {
             </button>
           )}
         </div>
-        {/* Dropdown Selection */}
-        <div className="relative">
-          <button
-            type="button"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="w-full flex border-gray-300 border items-center justify-between px-6 py-4 bg-textfield rounded-full ring-2 ring-transparent focus:ring-primary cursor-pointer"
-          >
-            <span>{formData.category || "Select a category"}</span>
-            <ArrowDown
-              size={20}
-              className={`transition-all ${isDropdownOpen ? "rotate-180" : ""}`}
-            />
-          </button>
-          <AnimatePresence>
-            {isDropdownOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="absolute top-16 left-0 w-full bg-background border-2 border-primary p-4 rounded-3xl z-50"
-              >
-                {[
-                  "General Inquiry",
-                  "Pricing Issues",
-                  "Booking Support",
-                  "Refund Request",
-                  "Other",
-                ].map((category) => (
-                  <div
-                    key={category}
-                    onClick={() => {
-                      setFormData((prev) => ({ ...prev, category }));
-                      setIsDropdownOpen(false);
-                    }}
-                    className="px-4 py-2 cursor-pointer hover:bg-primary hover:text-background rounded-2xl transition-all"
-                  >
-                    {category}
-                  </div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+
         {/* Message Textarea with Buttons */}
         <div className="relative">
           <textarea
@@ -341,11 +292,11 @@ const ContactForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full px-6 py-3 flex justify-center items-center rounded-full bg-primary text-background hover:bg-background hover:border-primary border-2 border-transparent font-semibold transition-colors text-md group hover:text-primary duration-300"
+          className="w-full px-6 py-3 flex justify-center items-center rounded-full bg-accent text-background hover:bg-background hover:border-accent border-2 border-transparent font-semibold transition-colors text-md group hover:text-accent duration-300"
         >
           Send Message
           <span className="overflow-hidden max-w-fit w-0 group-hover:w-12 group-hover:pl-3 transition-all duration-300">
-            <SendHorizonal className="h-4 text-primary" />
+            <SendHorizonal className="h-4 text-accent" />
           </span>
         </button>
       </form>

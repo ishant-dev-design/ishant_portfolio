@@ -8,7 +8,7 @@ const ThemeToggleGroup = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex bg-background p-1 rounded-full border-foreground border">
+    <div className="flex bg-background p-1 rounded-full border-accent border">
       {[
         { name: "Light", value: "light", icon: <Sun className="w-5 h-5" /> },
         { name: "Dark", value: "dark", icon: <Moon className="w-5 h-5" /> },
@@ -23,7 +23,7 @@ const ThemeToggleGroup = () => {
           onClick={() => setTheme(value)}
           className={`flex items-center gap-1 px-4 py-2 rounded-full transition-colors ${
             theme === value || (theme === "system" && value === "system")
-              ? "bg-primary text-background"
+              ? "bg-accent text-background"
               : "text-foreground"
           }`}
         >
