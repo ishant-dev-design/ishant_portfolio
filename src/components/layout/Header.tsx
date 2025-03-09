@@ -2,8 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextPressure from "../ui/TextPressure";
+import { useCursor } from "./CustomCursor";
+import { ArrowRight, Headset, Mailbox, PawPrintIcon } from "lucide-react";
+import ToggleTheme from "../ui/ToggleTheme";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -16,16 +19,22 @@ export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  // Close menu when the route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]); // Runs whenever pathname changes
+
   return (
     <>
-      {/* Menu Button (Fixed Position) */}
+      {/* Menu Button */}
       <button
+        data-cursor="pointer"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-[1000] overflow-hidden p-2.5 text-black text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
+        className="fixed top-4 right-4 z-[1000] p-2.5 text-black text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
       >
         <label className="hamburger">
           <input type="checkbox" checked={isOpen} readOnly className="hidden" />
-          <svg viewBox="0 0 32 32" className="w-6">
+          <svg viewBox="0 0 32 32" className="w-6 pointer-events-none">
             <path
               className="line line-top-bottom fill-background"
               d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
@@ -33,51 +42,59 @@ export default function Header() {
             <path className="line" d="M7 16 27 16"></path>
           </svg>
         </label>
-
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={isOpen ? "CLOSE" : "MENU"}
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
-            exit={{ y: 10 }}
-            transition={{ duration: 0.3 }}
-            className="w-12"
-          >
-            {isOpen ? "CLOSE" : "MENU"}
-          </motion.span>
-        </AnimatePresence>
+        <motion.div className="h-5 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={isOpen ? "CLOSE" : "MENU"}
+              initial={{ y: -30 }}
+              animate={{ y: 0 }}
+              exit={{ y: 30 }}
+              transition={{ duration: 0.3, ease: [1, 0, 0, 1] }}
+              className="w-12"
+            >
+              {isOpen ? "CLOSE" : "MENU"}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
       </button>
 
-      {/* Fullscreen Navigation Menu */}
+      {/* Fullscreen Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 bg-accent text-black z-[999] flex flex-col items-center justify-center tracking-tight"
+            initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+            animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+            exit={{ clipPath: "inset(100% 0% 0% 0%)" }}
+            transition={{ duration: 0.8, ease: [1, 0, 0, 1] }}
+            className="fixed gap-2 inset-0 bg-accent text-black z-[999] flex flex-col items-center justify-center tracking-tight"
           >
-            <div className="items-center gap-6 w-full max-w-sm px-6">
+            <div className="items-center md:w-full w-72 max-w-sm px-6 space-y-1">
               {navItems.map((item, index) => (
                 <motion.div
+                  className={`rounded-3xl -mx-4 ${
+                    pathname === item.href ? "bg-[#232121]" : "bg-transparent"
+                  }`}
                   key={item.href}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: "easeInOut",
+                  }}
                 >
                   <Link
+                    data-cursor="star"
                     href={item.href}
-                    className={`text-foreground w-full`}
-                    onClick={() => setIsOpen(false)}
+                    className="text-foreground w-full"
                   >
-                    <div className="w-full">
+                    <div className="flex items-center mx-4">
                       <TextPressure
-                        className={`${
+                        className={`transition-all duration-300 bg-transparent items-center ${
                           pathname === item.href
-                            ? "!text-accent bg-[#232121]"
-                            : "!text-[#232121]"
+                            ? "!text-accent"
+                            : "!text-[#232121] "
                         }`}
                         text={item.name}
                         flex={true}
@@ -99,17 +116,79 @@ export default function Header() {
             {/* Footer Links */}
             <motion.div
               className="absolute bottom-6 left-6 text-xs text-black"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [1, 0, 0, 1] }}
             >
-              <p className="mb-2">CODEGRID</p>
-              <p>INSTAGRAM →</p>
-              <p>LINKEDIN →</p>
-              <p>BEHANCE →</p>
-              <p>DRIBBBLE →</p>
+              <motion.div
+                data-cursor="pointer"
+                className="flex hover:underline items-center"
+              >
+                <motion.div></motion.div>
+                <Link href="https://www.instagram.com/fluffyboi03/">
+                  <motion.p className="flex items-center">
+                    INSTAGRAM <ArrowRight className="h-4" />
+                  </motion.p>
+                </Link>
+              </motion.div>
+              <motion.div
+                data-cursor="pointer"
+                className="flex hover:underline items-center"
+              >
+                <motion.div></motion.div>
+                <Link href="https://www.linkedin.com/in/ishant-dev-design/">
+                  <motion.p className="flex items-center">
+                    LINKEDIN <ArrowRight className="h-4" />
+                  </motion.p>
+                </Link>
+              </motion.div>
+              <motion.div
+                data-cursor="pointer"
+                className="flex hover:underline items-center"
+              >
+                <motion.div></motion.div>
+                <Link href="https://github.com/ishant010301">
+                  <motion.p className="flex items-center">
+                    GITHUB <ArrowRight className="h-4" />
+                  </motion.p>
+                </Link>
+              </motion.div>
+              <motion.div
+                data-cursor="pointer"
+                className="flex hover:underline items-center"
+              >
+                <motion.div></motion.div>
+                <Link href="https://www.behance.net/ishantkumar1">
+                  <motion.p className="flex items-center">
+                    BEHANCE <ArrowRight className="h-4" />
+                  </motion.p>
+                </Link>
+              </motion.div>
+              <motion.div
+                data-cursor="pointer"
+                className="flex hover:underline items-center"
+              >
+                <motion.div></motion.div>
+                <Link href="https://t.me/fluffyboi01">
+                  <motion.p className="flex items-center">
+                    TELEGRAM <ArrowRight className="h-4" />
+                  </motion.p>
+                </Link>
+              </motion.div>
             </motion.div>
+
+            <motion.div className="flex text-nowrap justify-center items-center md:flex-row mt-4 w-full">
+              <ToggleTheme />
+            </motion.div>
+            <Link href="/pets" data-cursor="pointer">
+              <motion.button
+                className={`flex items-center px-4 py-2 rounded-full gap-2 transition-colors bg-background text-foreground`}
+              >
+                <PawPrintIcon />
+                <span className="inline">meet my pets</span>
+              </motion.button>
+            </Link>
 
             {/* Contact Info */}
             <motion.div
@@ -119,8 +198,28 @@ export default function Header() {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <p>INFO@CODEGRID.COM</p>
-              <p>0923 3984 23</p>
+              <motion.div
+                data-cursor="pointer"
+                className="flex hover:underline items-center"
+              >
+                <motion.div className="px-1">
+                  <Headset />
+                </motion.div>
+                <Link href="https://wa.me/+919718022115">
+                  <motion.p className="px-1">+91 97180 22115</motion.p>
+                </Link>
+              </motion.div>
+              <motion.div
+                data-cursor="pointer"
+                className="flex hover:underline items-center"
+              >
+                <motion.div className="px-1">
+                  <Mailbox />
+                </motion.div>
+                <Link href="mailto:ishant121003@gmail.com">
+                  <motion.p className="px-1">ishant121003@gmail.com</motion.p>
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}

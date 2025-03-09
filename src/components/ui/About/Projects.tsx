@@ -61,7 +61,7 @@ const Projects = () => {
             <p className="text-lg text-foreground text-center mt-2">
               {project.description}
             </p>
-            <Link href={project.link}>
+            <Link data-cursor="pointer" href={project.link}>
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 whileHover={{ scale: 1.05 }}

@@ -31,19 +31,18 @@ const Certifications = () => {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6"
       >
         {certifications.map((certification, index) => (
-          <motion.div
-            className="relative"
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.6,
-              delay: index * 0.1,
-              ease: "circInOut",
-            }}
-          >
-            <motion.div className="rounded-3xl h-full">
+          <motion.div className="relative" key={index}>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: 0.2,
+                ease: "circInOut",
+              }}
+              className="rounded-3xl h-full"
+            >
               <motion.div className="flex flex-col items-center text-center">
                 <motion.img
                   src={certification.image}
@@ -58,6 +57,7 @@ const Certifications = () => {
                   {certification.description}
                 </p>
                 <button
+                  data-cursor="pointer"
                   className="mt-4 px-4 py-2 bg-accent text-background rounded-lg hover:bg-opacity-80 transition"
                   onClick={() =>
                     router.push(`/certifications/${certification.slug}`)

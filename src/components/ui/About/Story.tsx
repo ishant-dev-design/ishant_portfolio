@@ -1,27 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRightCircleIcon, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 
 const Story = () => {
   const { theme } = useTheme();
 
   return (
-    <motion.div className="h-fit flex justify-center items-center mb-12">
+    <motion.div className="h-fit flex justify-center items-center">
       <motion.div
-        className="relative w-full h-fit flex flex-col md:pt-12 rounded-3xl overflow-visible"
+        className="relative w-full h-fit grid grid-cols-1 md:grid-cols-3 md:pt-12 mb-12 rounded-3xl overflow-visible"
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
-        {/* Text Section */}
-        <motion.div className="flex flex-col justify-center z-10 mt-3">
+        <motion.div className="flex flex-col justify-end z-10 mt-3 md:-mr-12 col-span-2 order-3 md:order-2">
           <motion.div
-            className={`flex flex-col text-start space-y-6 max-h-fit p-6 border backdrop-blur-md rounded-3xl
-              ${
-                theme === "light"
-                  ? "bg-[#ffffff66] border-gray-300"
-                  : "bg-[#00000066] border-white/20"
-              }`}
+            className={`flex flex-col justify-end text-start space-y-6 max-h-fit p-6 border backdrop-blur-md rounded-3xl 
+    ${
+      theme === "light"
+        ? "bg-[#ffffff66] border-gray-300"
+        : "bg-[#00000066] border-white/20"
+    }`}
             transition={{
               staggerChildren: 0.2,
               duration: 0.6,
@@ -61,6 +62,20 @@ const Story = () => {
               <strong>curiosity</strong> and inspires me to keep learning.
             </motion.p>
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="order-2 md:order-3 w-full h-full flex col-span-1 justify-center items-center overflow-visible rounded-3xl"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          <motion.img
+            src="/images/profilepic2.jpg"
+            className="w-full pointer-events-none md:mt-24 h-full object-cover rounded-3xl transition-opacity duration-700 opacity-100 aspect-square"
+            loading="lazy"
+          />
         </motion.div>
       </motion.div>
     </motion.div>

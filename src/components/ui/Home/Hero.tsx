@@ -1,105 +1,132 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRightCircleIcon, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
+import { Spotify } from "react-spotify-embed";
 
 const Hero = () => {
   const { theme } = useTheme();
-
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-    }, 3000); // Change every 3 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const staticImage = "/profilepic.jpg";
-  const phrases = ["FrontEnd Developer", "UX/UI Designer", "Data Analyst"];
+  const [loading, setLoading] = useState(true);
 
   return (
-    <motion.div className="h-fit flex justify-center items-center">
-      <motion.div
-        className="relative w-full h-fit grid grid-cols-1 md:grid-cols-3 md:pt-12 mb-12 rounded-3xl overflow-visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      >
-        <motion.div className="flex flex-col justify-end z-10 mt-3 md:-mr-12 col-span-2 order-3 md:order-2">
+    <section className="relative flex items-center justify-center min-h-screen">
+      {/* Hero Content */}
+      {/* Left Text */}
+      <div className="w-full space-y-6">
+        <h1 className="text-5xl md:text-9xl md:-mt-12 mt-8 font-light text-accent leading-none flex flex-col md:flex-row flex-wrap md:items-center gap-4">
+          Hi, I'm
           <motion.div
-            className={`flex flex-col justify-end text-start space-y-6 max-h-fit p-6 border backdrop-blur-md rounded-3xl 
-    ${
-      theme === "light"
-        ? "bg-[#ffffff66] border-gray-300"
-        : "bg-[#00000066] border-white/20"
-    }`}
-            transition={{
-              staggerChildren: 0.2,
-              duration: 0.6,
-              ease: "easeOut",
-            }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1, rotate: -5 }}
+            whileHover={{ scale: 1.3, rotate: -15 }}
+            transition={{ duration: 0.8, ease: [1, 0, 0, 1] }}
+            className="rounded-3xl h-fit w-fit inline-block"
           >
-            <motion.h1 className="text-4xl md:text-7xl font-bold text-foreground text-start">
-              Ishant Kumar
-            </motion.h1>
-
-            <motion.h2 className="text-xl md:text-3xl font-semibold text-foreground overflow-hidden">
-              <motion.div className="inline-block">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={phrases[index]}
-                    className="inline-flex"
-                    initial={{ y: "100%" }}
-                    animate={{ y: "0%" }}
-                    exit={{ y: "-100%" }}
-                    transition={{ duration: 0.3, ease: [1, 0.2, 0, 0.8] }}
-                  >
-                    {phrases[index]}
-                  </motion.span>
-                </AnimatePresence>
-              </motion.div>
-            </motion.h2>
-
-            <motion.p className="text-md md:text-lg text-muted-foreground">
-              Hiya ! <br /> My name is Ishant Kumar and I am a skilled Frontend
-              Developer with a passion for building high-performance web
-              applications. My expertise lies in ReactJS, NextJS, JavaScript,
-              and UI/UX development, ensuring seamless and visually appealing
-              user experiences. Currently, I work at ADS247365 India Private
-              Limited, optimizing web performance and delivering scalable
-              solutions.
-            </motion.p>
-
-            <Link href="/resume" className="w-fit">
-              <button className="w-fit pl-6 pr-6 py-3 flex justify-center items-center rounded-full bg-accent text-background hover:bg-background hover:border-accent border-2 border-transparent font-semibold transition-colors text-md group hover:text-accent duration-300">
-                Get My Resume
-                <span className="overflow-hidden max-w-fit w-0 group-hover:w-12 group-hover:pl-3 transition-all duration-300">
-                  <ArrowRightCircleIcon className="h-full text-accent" />
-                </span>
-              </button>
-            </Link>
+            <Image
+              width={300}
+              height={300}
+              src="/profilepic.jpg"
+              alt="Profile"
+              className="w-20 md:w-32 aspect-square object-cover rounded-3xl"
+            />
           </motion.div>
-        </motion.div>
+          Ishant Kumar.
+        </h1>
 
-        <motion.div
-          className="order-2 md:order-3 w-full h-full flex col-span-1 justify-center items-center overflow-visible rounded-3xl"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        >
-          <motion.img
-            src="/profilepic.jpg"
-            className="w-full pointer-events-none md:mt-24 h-full object-cover rounded-3xl transition-opacity duration-700 opacity-100 aspect-square"
-            loading="lazy"
-          />
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 w-full pb-16 lg:pb-0">
+          {/* Playlist Card */}
+          <motion.div
+            transition={{ duration: 0.3 }}
+            className={`flex sm:col-span-2 flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-lg ${
+              theme === "light"
+                ? "bg-[#f5f3f066] border-gray-300"
+                : "bg-[#10101066] border-white/20"
+            }`}
+          >
+            <h3 className="p-4 text-sm text-gray-500">Listen with me</h3>
+            <div
+              data-cursor="spotify"
+              className="px-4 pb-4 rounded-3xl relative flex items-center justify-center"
+              onMouseEnter={() => document.body.classList.add("cursor-default")}
+              onMouseLeave={() =>
+                document.body.classList.remove("cursor-default")
+              }
+            >
+              {loading && (
+                <div className="absolute flex items-center justify-center w-full h-full">
+                  <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
+                </div>
+              )}
+              {/* Spotify Embed */}
+              <Spotify
+                className="w-full !rounded-2xl"
+                link="https://open.spotify.com/playlist/37i9dQZEVXcNheyb00KEzN?si=12c08ed0368f4fc6"
+                onLoad={() => setLoading(false)}
+              />
+            </div>
+          </motion.div>
+          {/* Reading Card */}
+          <motion.div
+            transition={{ duration: 0.3 }}
+            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-lg ${
+              theme === "light"
+                ? "bg-[#f5f3f066] border-gray-300"
+                : "bg-[#10101066] border-white/20"
+            }`}
+          >
+            <div className="p-4">
+              <h3 className="text-sm text-gray-500">What I'm reading</h3>
+              <p className="mt-2 font-medium text-accent">
+                30 DAYS: Change your habits, Change your life
+              </p>
+              <p className="mt-2 text-xs text-gray-500">Marc Reklau</p>{" "}
+            </div>
+            <div>
+              <Image
+                src="/book-cover.png"
+                alt="Book Cover"
+                width={300}
+                height={200}
+                className="rounded-xl w-full object-cover bg-background"
+              />
+            </div>
+          </motion.div>
+
+          {/* Map Card */}
+          <motion.div
+            transition={{ duration: 0.3 }}
+            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-lg ${
+              theme === "light"
+                ? "bg-[#f5f3f066] border-gray-300"
+                : "bg-[#10101066] border-white/20"
+            }`}
+          >
+            <h3 className="p-4 text-sm text-gray-500">Map</h3>
+            <div className="h-full relative overflow-hidden bg-accent">
+              <Image
+                src={`${
+                  theme === "light" ? "/map-light.png" : "/map-dark.png"
+                }`}
+                alt="Map"
+                width={500}
+                height={500}
+                className="w-auto h-full bg-accent overflow-hidden mix-blend-luminosity"
+              />
+            </div>
+            <div className="absolute p-4 bottom-0">
+              <p className="mt-2 font-medium text-3xl text-accent">Faridabad</p>
+              <p className=" font-medium text-accent">Haryana, India</p>
+              <p className="mt-2 text-xs text-gray-500">
+                28.395403° N, 77.315292° E
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,47 +1,58 @@
 export const petdata = [
   {
-    name: "Buddy",
-    species: "Golden Retriever",
-    image: "/images/pets/buddy.jpg",
+    name: "Fluffy",
+    species: "German Shepherd",
+    scientific_name: "Canis lupus familiaris",
+    image: [
+      { img: "/pets/Fluffy/1.jpg", id: 1 },
+      { img: "/pets/Fluffy/2.jpg", id: 2 },
+      { img: "/pets/Fluffy/3.jpg", id: 3 },
+      { img: "/pets/Fluffy/4.jpg", id: 4 },
+      { img: "/pets/Fluffy/5.jpg", id: 5 },
+    ],
     description:
-      "A friendly and energetic Golden Retriever who loves to play fetch and swim.",
+      "A loyal and intelligent German Shepherd who loves playing fetch and going on long walks.",
     funFact:
-      "Golden Retrievers were originally bred for retrieving game during hunting!",
+      "German Shepherds are widely used as working dogs in police and military forces due to their intelligence and trainability.",
   },
   {
-    name: "Whiskers",
-    species: "Siamese Cat",
-    image: "/images/pets/whiskers.jpg",
+    name: "Oscar",
+    species: "German Shepherd",
+    scientific_name: "Canis lupus familiaris",
+    image: [
+      { img: "/pets/Oscar/1.jpg", id: 1 },
+      { img: "/pets/Oscar/2.jpg", id: 2 },
+      { img: "/pets/Oscar/3.jpg", id: 3 },
+    ],
     description:
-      "A curious and intelligent Siamese cat who enjoys sunbathing and chasing laser pointers.",
+      "A brave and energetic German Shepherd who enjoys guarding the house and playing with his family.",
     funFact:
-      "Siamese cats are one of the oldest known cat breeds in the world.",
+      "German Shepherds were originally bred as herding dogs but are now commonly seen in various service roles.",
   },
   {
-    name: "Nibbles",
-    species: "Holland Lop Rabbit",
-    image: "/images/pets/nibbles.jpg",
+    name: "Pico",
+    species: "Indian Roofed Turtle",
+    scientific_name: "Pangshura tecta",
+    image: [
+      { img: "/pets/Pico/1.jpg", id: 1 },
+      { img: "/pets/Pico/2.jpg", id: 2 },
+    ],
     description:
-      "A fluffy and adorable bunny who loves munching on fresh greens and hopping around the house.",
+      "A curious and calm Indian Roofed Turtle who enjoys basking under the sun and swimming in his tank.",
     funFact:
-      "Holland Lop rabbits are known for their friendly and playful personalities!",
+      "Indian Roofed Turtles have a distinct ridge on their shell that gives them their unique name!",
   },
   {
-    name: "Leo",
-    species: "Bearded Dragon",
-    image: "/images/pets/leo.jpg",
+    name: "Zinny and Jerry",
+    species: "Albino Rats",
+    scientific_name: "Rattus norvegicus",
+    image: [
+      { img: "/pets/Zinny_Jerry/1.jpg", id: 1 },
+      { img: "/pets/Zinny_Jerry/2.jpg", id: 2 },
+    ],
     description:
-      "A calm and fascinating reptile who enjoys basking under his heat lamp.",
+      "A pair of affectionate and playful albino rats who love snuggling together and exploring their surroundings.",
     funFact:
-      "Bearded dragons can communicate by waving their arms and bobbing their heads!",
-  },
-  {
-    name: "Coco",
-    species: "Cockatiel",
-    image: "/images/pets/coco.jpg",
-    description:
-      "A cheerful and talkative cockatiel who loves mimicking sounds and whistling tunes.",
-    funFact:
-      "Cockatiels can learn to whistle entire songs if trained properly!",
+      "Albino rats have poor eyesight due to the lack of pigment in their eyes, but they compensate with their strong sense of smell and touch!",
   },
 ];

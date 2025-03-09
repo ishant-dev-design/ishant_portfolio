@@ -113,7 +113,7 @@ const ContactForm = () => {
     <div className="max-w-xl mx-auto rounded-2xl">
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name Input */}
-        <div className="relative">
+        <div data-cursor="text" className="relative">
           <input
             type="text"
             name="name"
@@ -125,6 +125,7 @@ const ContactForm = () => {
           />
           {formData.name && (
             <button
+              data-cursor="default"
               type="button"
               className="absolute right-3 rounded-full p-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white hover:bg-red-600"
               onClick={() => setFormData({ ...formData, name: "" })}
@@ -134,7 +135,7 @@ const ContactForm = () => {
           )}
         </div>
         {/* Email Input */}
-        <div className="relative">
+        <div data-cursor="text" className="relative">
           <input
             type="email"
             name="email"
@@ -146,6 +147,7 @@ const ContactForm = () => {
           />
           {formData.email && (
             <button
+              data-cursor="default"
               type="button"
               className="absolute right-3 rounded-full p-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white hover:bg-red-600"
               onClick={() => setFormData({ ...formData, email: "" })}
@@ -156,7 +158,7 @@ const ContactForm = () => {
         </div>
 
         {/* Message Textarea with Buttons */}
-        <div className="relative">
+        <div data-cursor="text" className="relative">
           <textarea
             name="message"
             value={formData.message}
@@ -169,6 +171,7 @@ const ContactForm = () => {
           <div className="absolute bottom-6 left-4 flex space-x-2">
             {/* File Upload Button */}
             <button
+              data-cursor="default"
               type="button"
               className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600"
               onClick={() => fileInputRef.current?.click()}
@@ -179,6 +182,7 @@ const ContactForm = () => {
             {/* Clear Message Button */}
             {formData.message && (
               <button
+                data-cursor="default"
                 type="button"
                 className="p-2 rounded-full bg-red-500 text-white hover:bg-red-600"
                 onClick={() =>
@@ -291,6 +295,7 @@ const ContactForm = () => {
 
         {/* Submit Button */}
         <button
+          data-cursor="pointer"
           type="submit"
           className="w-full px-6 py-3 flex justify-center items-center rounded-full bg-accent text-background hover:bg-background hover:border-accent border-2 border-transparent font-semibold transition-colors text-md group hover:text-accent duration-300"
         >

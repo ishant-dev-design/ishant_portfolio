@@ -8,7 +8,10 @@ const ThemeToggleGroup = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex bg-background p-1 rounded-full border-accent border">
+    <div
+      data-cursor="pointer"
+      className="flex bg-background p-1 rounded-full border-accent border"
+    >
       {[
         { name: "Light", value: "light", icon: <Sun className="w-5 h-5" /> },
         { name: "Dark", value: "dark", icon: <Moon className="w-5 h-5" /> },

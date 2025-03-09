@@ -9,20 +9,18 @@ const aboutMeDetails = [
   {
     image: "/pixel_perfect.gif",
     heading: "Pixel-Perfect Designs",
-    content:
-      "I focus on crafting visually stunning and highly interactive UI/UX experiences.",
+    content: "I craft visually stunning UI/UX with a user-first approach.",
   },
   {
     image: "/performance.gif",
     heading: "Performance & Optimization",
-    content:
-      "By leveraging Next.js and Lighthouse audits, I ensure fast and smooth web applications.",
+    content: "My expertise ensures blazing-fast, smooth applications.",
   },
   {
     image: "/scalable.gif",
     heading: "Scalable Applications",
     content:
-      "I build modular, maintainable, and scalable applications using React, Node.js, AWS, and Docker.",
+      "I ensure scalable, efficient, and robust solutions that grow with your business needs.",
   },
   {
     image: "/team.gif",
@@ -91,7 +89,7 @@ const Workwithme = () => {
       </motion.div>
 
       {/* Button */}
-      <Link href="/portfolio">
+      <Link href="/portfolio" data-cursor="pointer">
         <motion.button
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.05 }}

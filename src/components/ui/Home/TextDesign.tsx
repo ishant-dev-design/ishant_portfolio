@@ -8,9 +8,9 @@ const TextDesign = () => {
   const { theme } = useTheme();
 
   return (
-    <motion.div className="h-fit flex justify-center items-center mb-12">
+    <motion.div className="h-fit flex justify-center items-center mb-12 max-w-5xl mx-auto">
       <motion.div
-        className="relative w-full h-fit flex flex-col md:pt-12 rounded-3xl overflow-visible"
+        className="relative w-full h-fit flex flex-col rounded-3xl overflow-visible"
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
@@ -33,6 +33,19 @@ const TextDesign = () => {
             <TextPressure
               className="!text-foreground"
               text="develop"
+              flex={true}
+              alpha={false}
+              stroke={false}
+              width={false}
+              weight={true}
+              italic={true}
+              minFontSize={12}
+            />
+          </div>
+          <div style={{ position: "relative" }}>
+            <TextPressure
+              className="!text-accent"
+              text="innovate"
               flex={true}
               alpha={false}
               stroke={false}

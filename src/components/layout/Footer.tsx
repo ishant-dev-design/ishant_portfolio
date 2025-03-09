@@ -13,7 +13,6 @@ import {
   Youtube,
 } from "lucide-react";
 import Link from "next/link";
-import ToggleTheme from "../ui/ToggleTheme";
 
 const Footer = memo(() => {
   const socialMedia = [
@@ -85,74 +84,8 @@ const Footer = memo(() => {
             ))}
           </motion.div>
         </motion.div>
-        <motion.div className="flex justify-center md:justify-between text-nowrap flex-col md:flex-row">
-          {/* Social Media */}
-          <motion.div className="flex w-full my-2 md:my-0 flex-col justify-center items-center md:items-start">
-            <motion.div className="text-4xl">Follow me on</motion.div>
-            <motion.div className="flex rounded-full p-1 gap-1" id="socialbox">
-              {socialMedia.map(({ id, name, icon: Icon, hoverBgColor }) => (
-                <motion.button
-                  key={id}
-                  initial={{ width: "40px", scale: 1 }}
-                  whileHover={{ width: "150px" }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{
-                    width: { duration: 0.3 },
-                    scale: { duration: 0.1 },
-                  }}
-                  data-cursor="pointer"
-                  className={`flex p-2 max-w-fit text-foreground hover:text-white rounded-full justify-start items-center transition-colors bg-background duration-300 ${hoverBgColor} hover:opacity-80`}
-                >
-                  <motion.div>
-                    <Icon className="w-6 h-6" />
-                  </motion.div>
-                  <motion.span className="mx-2 overflow-hidden">
-                    {name}
-                  </motion.span>
-                </motion.button>
-              ))}
-            </motion.div>
-          </motion.div>
+        <motion.div className="flex justify-center md:justify-between text-nowrap flex-col md:flex-row"></motion.div>
 
-          {/* Contact Info */}
-          <motion.div className="flex flex-col md:flex-row w-full gap-3 md:gap-1 justify-end items-center">
-            <motion.div data-cursor="call" className="flex mx-3">
-              <motion.div className="px-1">
-                <Headset />
-              </motion.div>
-              <motion.p className="px-1">+91 97180 22115</motion.p>
-            </motion.div>
-            <motion.div data-cursor="mail" className="flex mx-3">
-              <motion.div className="px-1">
-                <Mailbox />
-              </motion.div>
-              <motion.p className="px-1">ishant121003@gmail.com</motion.p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-        <motion.div className="flex text-nowrap justify-center md:flex-row mt-4 w-full">
-          <ToggleTheme />
-        </motion.div>
-        {/* Quick Links */}
-        <motion.div className="flex text-nowrap justify-center items-center flex-col md:flex-row mt-4 w-full">
-          {[
-            { href: "/terms", label: "Terms & Conditions" },
-            { href: "/privacy", label: "Privacy Policy" },
-            { href: "/refund", label: "Refund Policy" },
-          ].map((link, index) => (
-            <div key={link.href} className="flex items-center">
-              {index > 0 && <div className="hidden md:flex p-1">|</div>}
-              <Link
-                href={link.href}
-                className="relative p-1 text-foreground hover:text-accent transition-colors duration-300 
-                  after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] 
-                  after:bg-accent after:transition-all after:duration-300 hover:after:w-full hover:after:left-0"
-              >
-                {link.label}
-              </Link>
-            </div>
-          ))}
-        </motion.div>
         {/* Copyright */}
         <motion.p className="mt-3">
           &copy; 2025 <b>ishant kumar</b>. All rights reserved.

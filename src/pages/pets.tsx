@@ -2,15 +2,14 @@
 
 import { motion } from "framer-motion";
 import { PawPrint, ArrowLeft } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
 import { petdata } from "@/data/petdata";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
+import Stack from "@/components/ui/Stack";
 
 const pets = () => {
   return (
     <motion.div
-      className="relative w-full flex flex-col items-center justify-center gap-6 py-12 px-6 min-h-screen text-foreground"
+      className="relative w-full flex flex-col items-center justify-center gap-6 min-h-screen text-foreground"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -44,7 +43,7 @@ const pets = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mt-8"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl mt-8"
       >
         {petdata.map((pet, index) => (
           <motion.div
@@ -56,14 +55,14 @@ const pets = () => {
               delay: index * 0.1,
               ease: "easeInOut",
             }}
-            className="bg-background rounded-3xl shadow-lg p-6 flex flex-col justify-between items-center text-center border border-gray-200 relative"
+            className="rounded-3xl shadow-lg p-6 flex flex-col justify-between items-center text-center relative"
           >
-            <Image
-              src={pet.image}
-              alt={pet.name}
-              width={200}
-              height={200}
-              className="w-48 h-48 object-cover rounded-full border-4 border-primary"
+            <Stack
+              randomRotation={true}
+              sensitivity={180}
+              sendToBackOnClick={false}
+              cardDimensions={{ width: 300, height: 300 }}
+              cardsData={Array.isArray(pet.image) ? pet.image : undefined}
             />
             <h3 className="text-2xl font-semibold text-brown-900 mt-4">
               {pet.name}
@@ -77,7 +76,7 @@ const pets = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-accent text-background text-xs font-semibold px-3 py-1 rounded-full mt-4"
+                className="bg-accent text-background text-xs font-semibold px-6 py-3 rounded-full mt-4"
               >
                 Fun Fact: {pet.funFact}
               </motion.div>
