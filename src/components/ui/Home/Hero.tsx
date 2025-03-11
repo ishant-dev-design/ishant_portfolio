@@ -4,23 +4,17 @@ import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Spotify } from "react-spotify-embed";
 
 const Hero = () => {
-  const { theme, resolvedTheme } = useTheme();
-  const currentTheme = theme || resolvedTheme || "light";
+  const { theme } = useTheme();
   const [loading, setLoading] = useState(true);
-
-  // Fallback in case Spotify embed fails
-  useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 5000);
-    return () => clearTimeout(timeout);
-  }, []);
 
   return (
     <section className="relative flex items-center justify-center min-h-screen">
       {/* Hero Content */}
+      {/* Left Text */}
       <div className="w-full space-y-6">
         <h1 className="text-5xl md:text-9xl md:-mt-12 mt-8 font-light text-accent leading-none flex flex-col md:flex-row flex-wrap md:items-center gap-4">
           Hi, I&apos;m
@@ -37,7 +31,6 @@ const Hero = () => {
               src="/images/profilepic.jpg"
               alt="Profile"
               className="w-20 md:w-32 aspect-square object-cover rounded-3xl"
-              priority={true} // Ensures fast loading
             />
           </motion.div>
           Ishant Kumar.
@@ -48,7 +41,7 @@ const Hero = () => {
           <motion.div
             transition={{ duration: 0.3 }}
             className={`flex sm:col-span-2 flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
-              currentTheme === "light"
+              theme === "light"
                 ? "bg-[#f5f3f066] border-gray-300"
                 : "bg-[#10101066] border-white/20"
             }`}
@@ -62,25 +55,24 @@ const Hero = () => {
                 document.body.classList.remove("cursor-default")
               }
             >
-              {loading && (
-                <div className="absolute flex items-center justify-center w-full h-full">
+              {/* <div>
+                {loading && (
                   <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
-                </div>
-              )}
-              {/* Spotify Embed */}
-              <Spotify
-                className="w-full !rounded-2xl"
-                link="https://open.spotify.com/playlist/37i9dQZEVXcNheyb00KEzN?si=12c08ed0368f4fc6"
-                onLoad={() => setLoading(false)}
-              />
+                )}
+                <Spotify
+                  className="w-full !rounded-2xl"
+                  link="https://open.spotify.com/playlist/37i9dQZEVXcNheyb00KEzN?si=12c08ed0368f4fc6"
+                  onLoad={() => setLoading(false)}
+                  onError={(e) => console.error("Spotify Embed Error:", e)}
+                />
+              </div> */}
             </div>
           </motion.div>
-
           {/* Reading Card */}
           <motion.div
             transition={{ duration: 0.3 }}
             className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
-              currentTheme === "light"
+              theme === "light"
                 ? "bg-[#f5f3f066] border-gray-300"
                 : "bg-[#10101066] border-white/20"
             }`}
@@ -90,7 +82,7 @@ const Hero = () => {
               <p className="mt-2 font-medium text-accent">
                 30 DAYS: Change your habits, Change your life
               </p>
-              <p className="mt-2 text-xs text-gray-500">Marc Reklau</p>
+              <p className="mt-2 text-xs text-gray-500">Marc Reklau</p>{" "}
             </div>
             <div>
               <Image
@@ -108,7 +100,7 @@ const Hero = () => {
           <motion.div
             transition={{ duration: 0.3 }}
             className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
-              currentTheme === "light"
+              theme === "light"
                 ? "bg-[#f5f3f066] border-gray-300"
                 : "bg-[#10101066] border-white/20"
             }`}
@@ -117,7 +109,7 @@ const Hero = () => {
             <div className="h-full relative overflow-hidden bg-accent">
               <Image
                 src={`${
-                  currentTheme === "light"
+                  theme === "light"
                     ? "/images/map-light.png"
                     : "/images/map-dark.png"
                 }`}
@@ -130,7 +122,7 @@ const Hero = () => {
             </div>
             <div className="absolute p-4 bottom-0">
               <p className="mt-2 font-medium text-3xl text-accent">Faridabad</p>
-              <p className="font-medium text-accent">Haryana, India</p>
+              <p className=" font-medium text-accent">Haryana, India</p>
               <p className="mt-2 text-xs text-gray-500">
                 28.395403° N, 77.315292° E
               </p>
