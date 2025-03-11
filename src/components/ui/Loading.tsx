@@ -55,11 +55,8 @@ export default function Loading({ onLoaded }: LoadingProps) {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      <AnimatedHeading className="flex text-2xl md:text-4xl text-foreground font-bold mb-6 items-center justify-center">
-        Loading your experience...
-      </AnimatedHeading>
       <AnimatedHeading className="text-4xl md:text-6xl text-primary font-bold mb-6">
-        Did You Know?
+        Loading your experience...
       </AnimatedHeading>
       <div className="relative w-full h-fit flex items-center justify-center overflow-hidden px-6">
         <motion.div className="overflow-hidden text-center text-2xl md:text-4xl text-foreground font-medium max-w-4xl">
