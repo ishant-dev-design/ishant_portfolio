@@ -7,23 +7,23 @@ import Image from "next/image";
 
 const aboutMeDetails = [
   {
-    image: "/images/pixel_perfect.gif",
+    image: "/images/workwithme/performance.gif",
     heading: "Pixel-Perfect Designs",
     content: "I craft visually stunning UI/UX with a user-first approach.",
   },
   {
-    image: "/images/performance.gif",
+    image: "/images/workwithme/performance.gif",
     heading: "Performance & Optimization",
     content: "My expertise ensures blazing-fast, smooth applications.",
   },
   {
-    image: "/images/scalable.gif",
+    image: "/images/workwithme/scalable.gif",
     heading: "Scalable Applications",
     content:
       "I ensure scalable, efficient, and robust solutions that grow with your business needs.",
   },
   {
-    image: "/images/team.gif",
+    image: "/images/workwithme/team.gif",
     heading: "Collaborative & Agile",
     content:
       "I work seamlessly with teams, following Agile methodologies and using Git for version control.",
