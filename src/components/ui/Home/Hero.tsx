@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { Spotify } from "react-spotify-embed";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -51,15 +50,17 @@ const Hero = () => {
                 document.body.classList.remove("cursor-default")
               }
             >
-              <div>
-                <Spotify
+              <div className="w-full">
+                <iframe
                   className="w-full !rounded-2xl"
-                  style={{
-                    width: "-webkit-fill-available",
-                  }}
-                  link="https://open.spotify.com/playlist/37i9dQZEVXcNheyb00KEzN?si=12c08ed0368f4fc6"
-                  onError={(e) => console.error("Spotify Embed Error:", e)}
-                />
+                  style={{ border: "none" }}
+                  src="https://open.spotify.com/embed/playlist/37i9dQZEVXcNheyb00KEzN?utm_source=generator"
+                  width="100%"
+                  height="152"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                ></iframe>
               </div>
             </div>
           </motion.div>
