@@ -15,13 +15,15 @@ const Document: FC = () => {
           sizes="96x96"
         />
         <link
+          id="favicon-light"
           rel="icon"
-          href="/favicon-light.ico"
+          href="/favicon-light.ico?v=2"
           media="(prefers-color-scheme: light)"
         />
         <link
+          id="favicon-dark"
           rel="icon"
-          href="/favicon-dark.ico"
+          href="/favicon-dark.ico?v=2"
           media="(prefers-color-scheme: dark)"
         />
         <link rel="shortcut icon" href="/favicon.ico" />

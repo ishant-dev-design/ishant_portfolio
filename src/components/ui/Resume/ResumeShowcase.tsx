@@ -18,6 +18,7 @@ const ResumeShowcase = () => {
           height={1000}
           src="/images/resume.png"
           alt="Resume"
+          priority
           className="object-cover rounded-xl mx-auto mb-12"
         />
       </motion.div>

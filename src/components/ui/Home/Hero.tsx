@@ -1,11 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 
 const Hero = () => {
   const { theme } = useTheme();
+
+  const ParallaxImage = () => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+      target: ref,
+      offset: ["start end", "end start"],
+    });
+
+    // Move the image upward slightly when scrolling
+    const y = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
+    return (
+      <motion.div ref={ref} style={{ y }} className="overflow-visible h-full">
+        <Image
+          src="/images/hero/book-cover.png"
+          alt="Book Cover"
+          width={300}
+          height={300}
+          loading="lazy"
+          className="rounded-xl w-full h-full object-cover overflow-visible"
+        />
+      </motion.div>
+    );
+  };
 
   return (
     <section className="relative flex items-center justify-center min-h-screen pt-32">
@@ -25,6 +50,7 @@ const Hero = () => {
               height={300}
               src="/images/profilepic.jpg"
               alt="Profile"
+              priority
               className="w-20 md:w-32 aspect-square object-cover rounded-3xl"
             />
           </motion.div>
@@ -78,18 +104,11 @@ const Hero = () => {
               <p className="mt-2 font-medium text-accent">
                 30 DAYS: Change your habits, Change your life
               </p>
-              <p className="mt-2 text-xs text-gray-500">Marc Reklau</p>{" "}
+              <p className="mt-2 text-xs text-gray-500">Marc Reklau</p>
             </div>
-            <div>
-              <Image
-                src="/images/hero/book-cover.png"
-                alt="Book Cover"
-                width={300}
-                height={200}
-                loading="lazy"
-                className="rounded-xl w-full object-cover"
-              />
-            </div>
+
+            {/* Parallax Effect */}
+            <ParallaxImage />
           </motion.div>
 
           {/* Map Card */}

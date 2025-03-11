@@ -22,7 +22,7 @@ export default function CertificationPage() {
 
   return (
     <motion.div
-      className="bg-background min-h-screen p-6 md:p-12 lg:p-20 text-foreground max-w-4xl mx-auto"
+      className="min-h-screen p-6 md:p-12 lg:p-20 text-foreground max-w-4xl mx-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
