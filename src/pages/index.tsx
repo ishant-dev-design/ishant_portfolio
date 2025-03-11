@@ -1,10 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-// import QuotesCarousel from "@/components/ui/Home/QuotesCarousel";
+import QuotesCarousel from "@/components/ui/Home/QuotesCarousel";
 // import Certificates from "@/components/ui/Home/Certificates";
 // import SkillsShowcase from "@/components/ui/Home/SkillsShowcase";
 // import Workwithme from "@/components/ui/Home/Workwithme";
-// import GetInTouch from "@/components/ui/GetInTouch";
+import GetInTouch from "@/components/ui/GetInTouch";
 // import TextDesign from "@/components/ui/Home/TextDesign";
 // import Hero from "@/components/ui/Home/Hero";
 
@@ -16,8 +16,8 @@ export default function Home() {
       {/* <Workwithme /> */}
       {/* <SkillsShowcase /> */}
       {/* <Certificates /> */}
-      {/* <QuotesCarousel /> */}
-      {/* <GetInTouch /> */}
+      <QuotesCarousel />
+      <GetInTouch />
     </motion.div>
   );
 }
