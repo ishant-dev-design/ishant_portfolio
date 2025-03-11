@@ -3,13 +3,11 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-// import { useState } from "react";
-// import { Spotify } from "react-spotify-embed";
-// import { Loader2 } from "lucide-react";
+import { useState } from "react";
+import { Spotify } from "react-spotify-embed";
 
 const Hero = () => {
   const { theme } = useTheme();
-  // const [loading, setLoading] = useState(true);
 
   return (
     <section className="relative flex items-center justify-center min-h-screen">
@@ -55,17 +53,13 @@ const Hero = () => {
                 document.body.classList.remove("cursor-default")
               }
             >
-              {/* <div>
-                {loading && (
-                  <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
-                )}
+              <div>
                 <Spotify
                   className="w-full !rounded-2xl"
                   link="https://open.spotify.com/playlist/37i9dQZEVXcNheyb00KEzN?si=12c08ed0368f4fc6"
-                  onLoad={() => setLoading(false)}
                   onError={(e) => console.error("Spotify Embed Error:", e)}
                 />
-              </div> */}
+              </div>
             </div>
           </motion.div>
           {/* Reading Card */}
