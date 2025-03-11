@@ -3,15 +3,13 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useState } from "react";
 import { Spotify } from "react-spotify-embed";
 
 const Hero = () => {
   const { theme } = useTheme();
 
   return (
-    <section className="relative flex items-center justify-center min-h-screen">
-      {/* Hero Content */}
+    <section className="relative flex items-center justify-center min-h-screen pt-32">
       {/* Left Text */}
       <div className="w-full space-y-6">
         <h1 className="text-5xl md:text-9xl md:-mt-12 mt-8 font-light text-accent leading-none flex flex-col md:flex-row flex-wrap md:items-center gap-4">
@@ -47,7 +45,7 @@ const Hero = () => {
             <h3 className="p-4 text-sm text-gray-500">Listen with me</h3>
             <div
               data-cursor="spotify"
-              className="px-4 pb-4 rounded-3xl relative flex items-center justify-center"
+              className="px-4 pb-4 rounded-3xl relative flex items-center justify-center w-full"
               onMouseEnter={() => document.body.classList.add("cursor-default")}
               onMouseLeave={() =>
                 document.body.classList.remove("cursor-default")
@@ -56,6 +54,9 @@ const Hero = () => {
               <div>
                 <Spotify
                   className="w-full !rounded-2xl"
+                  style={{
+                    width: "-webkit-fill-available",
+                  }}
                   link="https://open.spotify.com/playlist/37i9dQZEVXcNheyb00KEzN?si=12c08ed0368f4fc6"
                   onError={(e) => console.error("Spotify Embed Error:", e)}
                 />
