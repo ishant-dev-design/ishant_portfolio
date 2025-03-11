@@ -44,23 +44,22 @@ const Hero = () => {
             <h3 className="p-4 text-sm text-gray-500">Listen with me</h3>
             <div
               data-cursor="spotify"
-              className="px-4 pb-4 rounded-3xl relative flex items-center justify-center w-full"
+              className="px-4 pb-4 rounded-3xl relative flex items-center justify-center w-full h-full"
               onMouseEnter={() => document.body.classList.add("cursor-default")}
               onMouseLeave={() =>
                 document.body.classList.remove("cursor-default")
               }
             >
-              <div className="w-full">
+              <div className="w-full h-full">
                 <iframe
                   className="w-full !rounded-2xl"
-                  style={{ border: "none" }}
+                  style={{ border: "none", height: "400px" }} // Adjust height as needed
                   src="https://open.spotify.com/embed/playlist/37i9dQZEVXcNheyb00KEzN?utm_source=generator"
                   width="100%"
-                  height="152"
                   frameBorder="0"
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                ></iframe>
+                />
               </div>
             </div>
           </motion.div>
