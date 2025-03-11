@@ -4,11 +4,10 @@ import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GetInTouch from "@/components/ui/GetInTouch";
 import { motion } from "framer-motion";
 import Experience from "@/components/ui/About/Experience";
-import Projects from "@/components/ui/About/Projects";
 import WhatDrivesMe from "@/components/ui/About/WhatDrivesMe";
 import Story from "@/components/ui/About/Story";
-import Hobbies from "@/components/ui/About/Hobbies";
 import TextParallax from "@/components/ui/TextParallax";
+import Projects from "@/components/ui/About/Projects";
 
 export default function About() {
   return (
@@ -20,15 +19,16 @@ export default function About() {
           </AnimatedHeading>
         </motion.div>
       </div>
-      <div className="space-y-16 md:space-y-64">
-        <div className="space-y-16 md:space-y-64 max-w-7xl mx-auto">
+      <div className="space-y-32 md:space-y-64">
+        <div className="space-y-32 md:space-y-64 max-w-7xl mx-auto">
           <Story />
         </div>
         <div>
           <TextParallax />
         </div>
-        <div className="space-y-16 md:space-y-64 max-w-7xl mx-auto">
+        <div className="space-y-32 md:space-y-64 max-w-7xl mx-auto">
           <Experience />
+          <Projects />
           <HobbiesInterestsPage />
           <WhatDrivesMe />
           <GetInTouch />

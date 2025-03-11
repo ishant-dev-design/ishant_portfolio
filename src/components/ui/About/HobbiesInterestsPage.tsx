@@ -48,7 +48,7 @@ export default function Projects() {
   const { theme } = useTheme();
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full pt-32">
       <motion.h1
         className="text-5xl md:text-7xl font-bold text-center mb-12"
         initial={{ opacity: 0, y: 50 }}
@@ -81,7 +81,7 @@ export default function Projects() {
             <div
               ref={container}
               key={i}
-              className="w-full md:border-t border-accent relative"
+              className="w-full md:border-t border-accent relative -mx-6 md:mx-0"
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               onTouchStart={() => setHoveredIndex(i)} // Mobile touch support
@@ -115,12 +115,12 @@ export default function Projects() {
                     : { clipPath: "inset(50% 0 50%)" }
                 }
                 transition={{ duration: 0.2, ease: [1, 0, 0, 1] }}
-                className="md:absolute z-10 top-0 left-0 w-full bg-accent flex flex-col md:flex-row justify-between items-center px-4 md:px-6 py-6 md:py-0"
+                className="md:absolute z-10 top-0 left-0 w-full md:bg-accent flex flex-col md:flex-row justify-between items-center px-4 md:px-6 py-6 md:py-0"
               >
                 <p className="hidden md:flex text-[#101010] uppercase font-bold text-3xl md:text-6xl lg:text-8xl leading-tight md:leading-[7.5vw] relative z-10 w-full text-center md:text-left">
                   {title}
                 </p>
-                <p className="md:absolute right-0 h-full max-w-full md:max-w-[768px] flex items-center z-10 text-[#101010] w-full text-center md:text-left px-2 md:px-6 text-sm md:text-lg lg:text-[1vw] font-bold bg-accent">
+                <p className="md:absolute right-0 h-full max-w-full md:max-w-[768px] flex items-center z-10 text-accent md:text-[#101010] w-full text-left px-2 md:px-6 text-lg md:text-lg lg:text-[1vw] font-bold bg-transparent md:bg-accent">
                   {description}
                 </p>
               </motion.div>

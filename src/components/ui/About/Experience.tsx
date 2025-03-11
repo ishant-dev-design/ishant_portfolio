@@ -53,7 +53,7 @@ const Experience = () => {
           Education & Experience
         </motion.h1>
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Education Section */}
           <motion.div
             className={`p-6 border backdrop-blur-sm rounded-3xl

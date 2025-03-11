@@ -1,7 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import TopFlightRoutes from "@/components/ui/Homeold/TopFlightRoutes";
-import FlightStatistics from "@/components/ui/Homeold/FlightStatistics";
 import QuotesCarousel from "@/components/ui/Home/QuotesCarousel";
 import Certificates from "@/components/ui/Home/Certificates";
 import SkillsShowcase from "@/components/ui/Home/SkillsShowcase";
@@ -13,12 +11,10 @@ import Carousel from "@/components/ui/Stack";
 
 export default function Home() {
   return (
-    <motion.div className="bg-transparent max-w-7xl mx-auto space-y-16 md:space-y-64">
+    <motion.div className="bg-transparent max-w-7xl mx-auto space-y-32 md:space-y-64">
       <Hero />
       <TextDesign />
       <Workwithme />
-      {/* <TopFlightRoutes /> */}
-      {/* <FlightStatistics /> */}
       <SkillsShowcase />
       <Certificates />
       <QuotesCarousel />
