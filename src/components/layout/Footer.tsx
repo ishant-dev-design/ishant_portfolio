@@ -3,47 +3,8 @@
 
 import { motion } from "framer-motion";
 import { memo } from "react";
-import {
-  Facebook,
-  Headset,
-  Instagram,
-  Linkedin,
-  Mailbox,
-  Twitter,
-  Youtube,
-} from "lucide-react";
-import Link from "next/link";
 
 const Footer = memo(() => {
-  const socialMedia = [
-    {
-      id: 1,
-      name: "Facebook",
-      icon: Facebook,
-      hoverBgColor: "hover:bg-blue-600",
-    },
-    {
-      id: 2,
-      name: "Twitter",
-      icon: Twitter,
-      hoverBgColor: "hover:bg-blue-400",
-    },
-    {
-      id: 3,
-      name: "Instagram",
-      icon: Instagram,
-      hoverBgColor:
-        "hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500",
-    },
-    {
-      id: 4,
-      name: "LinkedIn",
-      icon: Linkedin,
-      hoverBgColor: "hover:bg-blue-700",
-    },
-    { id: 5, name: "YouTube", icon: Youtube, hoverBgColor: "hover:bg-red-600" },
-  ];
-
   return (
     <motion.footer className="relative text-center w-full flex justify-center z-[60] max-w-7xl mx-auto">
       <motion.div className="flex flex-col w-full text-foreground rounded-3xl p-3 z-10">

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Loading from "../ui/Loading";
-import { ThemeProvider, useTheme } from "next-themes";
+import { ThemeProvider } from "next-themes";
 import Squares from "./Square_BG";
 
 export default function Layout({ children }: { children: ReactNode }) {

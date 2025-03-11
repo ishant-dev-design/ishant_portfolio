@@ -1,8 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRightCircleIcon, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 
 const Story = () => {
@@ -34,7 +32,7 @@ const Story = () => {
             </motion.h1>
 
             <motion.p className="text-md md:text-lg text-muted-foreground">
-              Ever since I can remember, I’ve been{" "}
+              Ever since I can remember, I&apos;ve been{" "}
               <strong>captivated by technology</strong>—not just how it works,
               but how it <strong>shapes and enhances our world</strong>. My
               journey into the digital universe has led me to explore{" "}
@@ -49,16 +47,17 @@ const Story = () => {
               <strong>both visually appealing and highly functional</strong>. I
               also have a deep fascination with{" "}
               <strong>data-driven decision-making</strong>, uncovering patterns
-              that tell compelling stories. Whether it's{" "}
+              that tell compelling stories. Whether it&apos;s{" "}
               <strong>coding, designing, or analyzing</strong>, I see technology
               as an endless playground for{" "}
               <strong>creativity and innovation</strong>.
               <br />
               <br />
-              Beyond the screen, I’m an <strong>avid explorer</strong>—whether
-              it’s through <strong>soccer, video games, movies, reading</strong>
-              , or <strong>long walks</strong> (yes, <em>a lot</em> of them).
-              Every experience, both digital and real-world, fuels my{" "}
+              Beyond the screen, I&apos;m an <strong>avid explorer</strong>
+              —whether it&apos;s through{" "}
+              <strong>soccer, video games, movies, reading</strong>, or{" "}
+              <strong>long walks</strong> (yes, <em>a lot</em> of them). Every
+              experience, both digital and real-world, fuels my{" "}
               <strong>curiosity</strong> and inspires me to keep learning.
             </motion.p>
           </motion.div>

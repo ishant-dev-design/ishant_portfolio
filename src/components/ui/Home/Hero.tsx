@@ -17,7 +17,7 @@ const Hero = () => {
       {/* Left Text */}
       <div className="w-full space-y-6">
         <h1 className="text-5xl md:text-9xl md:-mt-12 mt-8 font-light text-accent leading-none flex flex-col md:flex-row flex-wrap md:items-center gap-4">
-          Hi, I'm
+          Hi, I&apos;m
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1, rotate: -5 }}
@@ -78,7 +78,7 @@ const Hero = () => {
             }`}
           >
             <div className="p-4">
-              <h3 className="text-sm text-gray-500">What I'm reading</h3>
+              <h3 className="text-sm text-gray-500">What I&apos;m reading</h3>
               <p className="mt-2 font-medium text-accent">
                 30 DAYS: Change your habits, Change your life
               </p>

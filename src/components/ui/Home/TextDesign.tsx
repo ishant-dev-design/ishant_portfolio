@@ -1,12 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
 import TextPressure from "../TextPressure";
 
 const TextDesign = () => {
-  const { theme } = useTheme();
-
   return (
     <motion.div className="h-fit flex justify-center items-center max-w-5xl mx-auto">
       <motion.div

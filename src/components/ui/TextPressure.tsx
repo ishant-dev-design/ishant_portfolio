@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface TextPressureProps {
   text?: string;
@@ -54,6 +54,38 @@ const TextPressure: React.FC<TextPressureProps> = ({
     return Math.sqrt(dx * dx + dy * dy);
   };
 
+  // Use useCallback to prevent function recreation on every render
+  const setSize = useCallback(() => {
+    if (!containerRef.current || !titleRef.current) return;
+
+    const { width: containerW, height: containerH } =
+      containerRef.current.getBoundingClientRect();
+
+    let newFontSize = containerW / (chars.length / 2);
+    newFontSize = Math.max(newFontSize, minFontSize);
+
+    setFontSize(newFontSize);
+    setScaleY(1);
+    setLineHeight(1);
+
+    requestAnimationFrame(() => {
+      if (!titleRef.current) return;
+      const textRect = titleRef.current.getBoundingClientRect();
+
+      if (scale && textRect.height > 0) {
+        const yRatio = containerH / textRect.height;
+        setScaleY(yRatio);
+        setLineHeight(yRatio);
+      }
+    });
+  }, [scale, minFontSize, chars.length]);
+
+  useEffect(() => {
+    setSize();
+    window.addEventListener("resize", setSize);
+    return () => window.removeEventListener("resize", setSize);
+  }, [setSize]);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       cursorRef.current.x = e.clientX;
@@ -82,37 +114,6 @@ const TextPressure: React.FC<TextPressureProps> = ({
       window.removeEventListener("touchmove", handleTouchMove);
     };
   }, []);
-
-  const setSize = () => {
-    if (!containerRef.current || !titleRef.current) return;
-
-    const { width: containerW, height: containerH } =
-      containerRef.current.getBoundingClientRect();
-
-    let newFontSize = containerW / (chars.length / 2);
-    newFontSize = Math.max(newFontSize, minFontSize);
-
-    setFontSize(newFontSize);
-    setScaleY(1);
-    setLineHeight(1);
-
-    requestAnimationFrame(() => {
-      if (!titleRef.current) return;
-      const textRect = titleRef.current.getBoundingClientRect();
-
-      if (scale && textRect.height > 0) {
-        const yRatio = containerH / textRect.height;
-        setScaleY(yRatio);
-        setLineHeight(yRatio);
-      }
-    });
-  };
-
-  useEffect(() => {
-    setSize();
-    window.addEventListener("resize", setSize);
-    return () => window.removeEventListener("resize", setSize);
-  }, [scale, text]);
 
   useEffect(() => {
     let rafId: number;

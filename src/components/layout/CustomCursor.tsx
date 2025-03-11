@@ -6,7 +6,6 @@ import {
   ReactNode,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRightSquare } from "lucide-react";
 
 // Hide the native cursor globally
 const hideNativeCursor = () => {
@@ -17,10 +16,7 @@ const hideNativeCursor = () => {
 
 // Cursor Context
 const CursorContext = createContext({
-  setHoverElement: (
-    el: HTMLElement | null,
-    options?: { customContent?: ReactNode; cursordotClassName?: string }
-  ) => {},
+  setHoverElement: () => {},
 });
 
 // Cursor Styles
@@ -36,7 +32,7 @@ type CursorType = keyof typeof cursorStyles;
 export const CursorProvider = ({ children }: { children: ReactNode }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [customContent, setCustomContent] = useState<ReactNode | null>(null);
-  const [cursorDotClassName, setCursorDotClassName] = useState("");
+  const [cursorDotClassName] = useState("");
   const [cursorType, setCursorType] = useState<CursorType>("default");
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
@@ -91,12 +87,7 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
   return (
     <CursorContext.Provider
       value={{
-        setHoverElement: (el, options) => {
-          if (options) {
-            setCustomContent(options.customContent || null);
-            setCursorDotClassName(options.cursordotClassName || "");
-          }
-        },
+        setHoverElement: () => {},
       }}
     >
       {children}

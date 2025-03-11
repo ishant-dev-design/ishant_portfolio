@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PawPrint, ArrowLeft } from "lucide-react";
+import { PawPrint } from "lucide-react";
 import { petdata } from "@/data/petdata";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import Stack from "@/components/ui/Stack";
@@ -76,7 +76,7 @@ const pets = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-accent text-foreground text-xs font-semibold px-6 py-3 rounded-full mt-4"
+                className="bg-accent text-[#101010] text-xs font-semibold px-6 py-3 rounded-full mt-4"
               >
                 Fun Fact: {pet.funFact}
               </motion.div>

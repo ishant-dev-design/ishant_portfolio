@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { once } from "events";
 
 const GetInTouch = () => {
   return (
@@ -48,7 +47,7 @@ const GetInTouch = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           className="text-4xl md:text-6xl font-bold"
         >
-          Let's Build Something Amazing!
+          Let&apos;s Build Something Amazing!
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -57,9 +56,9 @@ const GetInTouch = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           className="mt-4 text-lg md:text-xl text-muted-foreground"
         >
-          Have a project in mind or just want to connect? I'm always open to
-          discussing new opportunities, collaborations, or just chatting about
-          tech!
+          Have a project in mind or just want to connect? I&apos;m always open
+          to discussing new opportunities, collaborations, or just chatting
+          about tech!
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

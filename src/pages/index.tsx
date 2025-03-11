@@ -7,7 +7,6 @@ import Workwithme from "@/components/ui/Home/Workwithme";
 import GetInTouch from "@/components/ui/GetInTouch";
 import TextDesign from "@/components/ui/Home/TextDesign";
 import Hero from "@/components/ui/Home/Hero";
-import Carousel from "@/components/ui/Stack";
 
 export default function Home() {
   return (

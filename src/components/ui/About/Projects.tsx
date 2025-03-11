@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -92,7 +92,7 @@ export default function Projects() {
 
 interface ColumnProps {
   images: string[];
-  y: any;
+  y: MotionValue<number>;
 }
 
 const Column: React.FC<ColumnProps> = ({ images, y }) => {

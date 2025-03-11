@@ -11,8 +11,15 @@ export default async function handler(
 
   const { name, email, message } = req.body;
 
+  // Validate required fields
   if (!name || !email || !message) {
     return res.status(400).json({ message: "All fields are required." });
+  }
+
+  // Validate email format using regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: "Invalid email format." });
   }
 
   try {

@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
+// import { ArrowUpRight } from "lucide-react";
 
 const aboutMeDetails = [
   {
@@ -88,8 +88,7 @@ const Workwithme = () => {
         ))}
       </motion.div>
 
-      {/* Button */}
-      <Link href="/portfolio" data-cursor="pointer">
+      {/* <Link href="/portfolio" data-cursor="pointer">
         <motion.button
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.05 }}
@@ -98,7 +97,7 @@ const Workwithme = () => {
         >
           View My Work <ArrowUpRight className="ml-2" />
         </motion.button>
-      </Link>
+      </Link> */}
     </motion.div>
   );
 };

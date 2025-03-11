@@ -43,13 +43,26 @@ const Experience = () => {
   const { theme } = useTheme();
 
   return (
-    <motion.div className="h-fit flex justify-center items-center mb-12">
+    <motion.div
+      className="h-fit flex justify-center items-center mb-12"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+    >
       <motion.div
         className="relative w-full h-fit flex flex-col md:pt-12 rounded-3xl overflow-visible"
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
-        <motion.h1 className="text-4xl md:text-7xl font-bold text-foreground text-center mb-10">
+        {/* Main Title */}
+        <motion.h1
+          className="text-4xl md:text-7xl font-bold text-foreground text-center mb-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           Education & Experience
         </motion.h1>
 
@@ -62,17 +75,34 @@ const Experience = () => {
                   ? "bg-[#ffffff66] border-gray-300"
                   : "bg-[#00000066] border-white/20"
               }`}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.h2 className="text-3xl font-semibold text-primary mb-4 flex items-center">
+            <motion.h2
+              className="text-3xl font-semibold text-primary mb-4 flex items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <GraduationCap className="flex h-8 mr-4" />
               Education
             </motion.h2>
             {educationData.map((edu, index) => (
-              <motion.div key={index} className="mb-4">
+              <motion.div
+                key={index}
+                className="mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.1,
+                }}
+              >
                 <h3 className="text-xl font-semibold">{edu.degree}</h3>
                 <p className="text-md text-foreground">{edu.institution}</p>
                 <p className="text-sm text-foreground">{edu.year}</p>
@@ -88,17 +118,34 @@ const Experience = () => {
                   ? "bg-[#ffffff66] border-gray-300"
                   : "bg-[#00000066] border-white/20"
               }`}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.h2 className="flex items-center text-3xl font-semibold text-primary mb-4">
+            <motion.h2
+              className="flex items-center text-3xl font-semibold text-primary mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <BriefcaseBusiness className="flex h-8 mr-4" />
               Work Experience
             </motion.h2>
             {experienceData.map((exp, index) => (
-              <motion.div key={index} className="mb-4">
+              <motion.div
+                key={index}
+                className="mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.1,
+                }}
+              >
                 <h3 className="text-xl font-semibold">{exp.role}</h3>
                 <p className="text-md text-foreground">{exp.company}</p>
                 <p className="text-sm text-foreground">{exp.year}</p>

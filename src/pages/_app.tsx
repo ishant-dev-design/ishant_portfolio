@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import CursorProvider from "@/components/layout/CustomCursor";
 import { useEffect } from "react";
 import Lenis from "lenis";
-import Squares from "@/components/layout/Square_BG";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const pathname = usePathname();

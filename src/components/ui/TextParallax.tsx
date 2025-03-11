@@ -1,5 +1,5 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -59,7 +59,7 @@ interface SlideProps {
   text: string;
   direction: "left" | "right";
   speed: number;
-  progress: any; // You can replace 'any' with the appropriate type if known
+  progress: MotionValue<number>;
 }
 
 const Slide = ({ src, text, direction, speed, progress }: SlideProps) => {

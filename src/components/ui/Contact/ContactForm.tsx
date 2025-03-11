@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SendHorizonal, X, Loader2, CheckCircle } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -7,8 +7,7 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [buttonState, setButtonState] = useState("Send Message");
   const [buttonColor, setButtonColor] = useState("bg-accent");
@@ -22,14 +21,11 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
     setLoading(true);
     setButtonState("Sending...");
     setButtonColor("bg-yellow-500");
 
     if (!formData.name || !formData.email || !formData.message) {
-      setError("All fields are required.");
       setButtonState("All fields are required");
       setButtonColor("bg-red-500");
       setLoading(false);
@@ -48,39 +44,30 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        setSuccess("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
         setButtonState("Sent!");
         setButtonColor("bg-green-500");
-        setTimeout(() => {
-          setButtonState("Send Message");
-          setButtonColor("bg-accent");
-        }, 3000);
       } else {
-        setError("Failed to send message. Please try again.");
         setButtonState("Failed to send");
         setButtonColor("bg-red-500");
-        setTimeout(() => {
-          setButtonState("Send Message");
-          setButtonColor("bg-accent");
-        }, 3000);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setError("Something went wrong. Try again later.");
       setButtonState("Error! Try again");
       setButtonColor("bg-red-500");
-      setTimeout(() => {
-        setButtonState("Send Message");
-        setButtonColor("bg-accent");
-      }, 3000);
     }
+
     setLoading(false);
+    setTimeout(() => {
+      setButtonState("Send Message");
+      setButtonColor("bg-accent");
+    }, 3000);
   };
 
   return (
     <div className="max-w-xl mx-auto rounded-2xl md:pt-16 md:pb-64">
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
+        {/** Name Input **/}
         <div className="relative">
           <input
             type="text"
@@ -101,6 +88,7 @@ const ContactForm = () => {
           )}
         </div>
 
+        {/** Email Input **/}
         <div className="relative">
           <input
             type="email"
@@ -121,6 +109,7 @@ const ContactForm = () => {
           )}
         </div>
 
+        {/** Message Input **/}
         <div className="relative">
           <textarea
             name="message"
@@ -140,10 +129,14 @@ const ContactForm = () => {
             </button>
           )}
         </div>
+
+        {/** Submit Button **/}
         <div className="flex w-full justify-center items-center">
           <button
             type="submit"
-            className={`w-full px-6 py-3 flex justify-center items-center font-bold rounded-full ${buttonColor} text-[#101010] transition-all duration-300 ease-in-out text-md group $ {loading ? "!w-14 !px-3" : "w-full"}`}
+            className={`w-full px-6 py-3 flex justify-center items-center font-bold rounded-full ${buttonColor} text-[#101010] transition-all duration-300 ease-in-out text-md ${
+              loading ? "!w-14 !px-3" : "w-full"
+            }`}
             disabled={loading}
           >
             {loading ? (
