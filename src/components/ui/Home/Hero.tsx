@@ -86,7 +86,7 @@ const Hero = () => {
             </div>
             <div>
               <Image
-                src="/images/book-cover.png"
+                src="/images/hero/book-cover.png"
                 alt="Book Cover"
                 width={300}
                 height={200}
@@ -110,8 +110,8 @@ const Hero = () => {
               <Image
                 src={`${
                   theme === "light"
-                    ? "/images/map-light.png"
-                    : "/images/map-dark.png"
+                    ? "/images/hero/map-light.png"
+                    : "/images/hero/map-dark.png"
                 }`}
                 alt="Map"
                 width={300}
