@@ -65,7 +65,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto rounded-2xl md:pt-16 md:pb-64">
+    <div className="max-w-xl mx-auto rounded-2xl pt-16 pb-64">
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
         {/** Name Input **/}
         <div className="relative">

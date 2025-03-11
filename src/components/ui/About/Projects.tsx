@@ -40,7 +40,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <main className="relative w-full px-4 sm:px-2">
+    <main className="relative w-full space-y-16">
       {/* Title */}
       <div className="relative md:absolute w-full z-0 flex justify-center items-center text-center  md:text-8xl text-3xl font-bold">
         My Projects
@@ -60,7 +60,7 @@ export default function Projects() {
         </div>
       ) : (
         // Mobile View - Show Something Different
-        <div className="grid grid-cols-2 gap-4 p-4">
+        <div className="grid grid-cols-2 gap-4">
           {images.map((src, i) => (
             <div
               key={i}
