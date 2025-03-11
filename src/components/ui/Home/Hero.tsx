@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useState } from "react";
-import { Spotify } from "react-spotify-embed";
+// import { useState } from "react";
+// import { Spotify } from "react-spotify-embed";
+// import { Loader2 } from "lucide-react";
 
 const Hero = () => {
   const { theme } = useTheme();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   return (
     <section className="relative flex items-center justify-center min-h-screen">
