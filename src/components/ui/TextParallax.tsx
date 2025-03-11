@@ -10,19 +10,19 @@ const slides: {
   speed: number;
 }[] = [
   {
-    src: "/images/1.gif",
+    src: "/images/cubes/1.gif",
     text: "Front End Developer",
     direction: "left",
     speed: 1,
   },
   {
-    src: "/images/2.gif",
+    src: "/images/cubes/2.gif",
     text: "Creative Designer",
     direction: "right",
     speed: 1.6,
   },
   {
-    src: "/images/3.gif",
+    src: "/images/cubes/3.gif",
     text: "UI/UX Enthusiast",
     direction: "left",
     speed: 0.8,
