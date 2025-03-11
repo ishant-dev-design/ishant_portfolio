@@ -21,28 +21,32 @@ export default function Layout({ children }: { children: ReactNode }) {
     <ThemeProvider attribute="class" defaultTheme="system">
       <div className="flex flex-col min-h-screen bg-background font-sans">
         <AnimatePresence mode="wait">
-          {loading && <Loading onLoaded={() => setLoading(false)} />}
+          {loading && (
+            <Loading key="loading" onLoaded={() => setLoading(false)} />
+          )}
         </AnimatePresence>
 
-        {!loading && (
-          <>
-            <Header />
-            <div className="fixed w-screen h-screen">
-              <Squares speed={0} squareSize={40} direction="left" />
-            </div>
-            <motion.main
-              className="p-6 z-10 pointer-events-auto"
-              key={pathname}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-              {children}
-            </motion.main>
-            <Footer />
-          </>
-        )}
+        <AnimatePresence mode="wait">
+          {!loading && (
+            <>
+              <Header />
+              <div className="fixed w-screen h-screen">
+                <Squares speed={0} squareSize={40} direction="left" />
+              </div>
+              <motion.main
+                className="p-6 z-10 pointer-events-auto"
+                key={pathname}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {children}
+              </motion.main>
+              <Footer />
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </ThemeProvider>
   );
