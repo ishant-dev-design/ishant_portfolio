@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const aboutMeDetails = [
   {
-    image: "/images/workwithme/performance.gif",
+    image: "/images/workwithme/pixel_perfect.gif",
     heading: "Pixel-Perfect Designs",
     content: "I craft visually stunning UI/UX with a user-first approach.",
   },
