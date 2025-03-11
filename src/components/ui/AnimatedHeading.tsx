@@ -32,7 +32,7 @@ export default function AnimatedHeading({
 
   return (
     <motion.div className={`overflow-hidden ${className}`}>
-      <h1 className="flex flex-wrap">{words}</h1>
+      <h1 className="flex flex-wrap justify-center">{words}</h1>
     </motion.div>
   );
 }

@@ -15,10 +15,9 @@ const pets = () => {
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
       <motion.div className="flex pt-16 md:pt-24 pb-12 justify-center items-center w-full">
-        <AnimatedHeading className="text-3xl md:text-5xl lg:text-8xl text-foreground text-center">
+        <AnimatedHeading className="text-3xl md:text-5xl lg:text-8xl text-foreground text-center flex justify-center items-center">
           Meet My Adorable Companions.
         </AnimatedHeading>
-        <PawPrint className="text-primary h-16 w-16" />
       </motion.div>
       <p className="mt-4 text-lg md:text-xl max-w-3xl text-center text-brown-700">
         Here are my furry, feathery, and scaly friends who fill my life with joy
