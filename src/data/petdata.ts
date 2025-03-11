@@ -11,7 +11,7 @@ export const petdata = [
       { img: "/pets/Fluffy/5.jpg", id: 5 },
     ],
     description:
-      "A loyal and intelligent German Shepherd who loves playing fetch and going on long walks.",
+      "A loyal and intelligent German Shepherd who loved playing fetch and going on long walks.",
     funFact:
       "German Shepherds are widely used as working dogs in police and military forces due to their intelligence and trainability.",
   },
@@ -51,7 +51,7 @@ export const petdata = [
       { img: "/pets/Zinny_Jerry/2.jpg", id: 2 },
     ],
     description:
-      "A pair of affectionate and playful albino rats who love snuggling together and exploring their surroundings.",
+      "A pair of affectionate and playful albino rats who loved snuggling together and exploring their surroundings.",
     funFact:
       "Albino rats have poor eyesight due to the lack of pigment in their eyes, but they compensate with their strong sense of smell and touch!",
   },

@@ -233,7 +233,7 @@ export default function FlightSearchForm() {
               key={type}
               className={`px-4 py-2 rounded-full transition-colors ${
                 searchTerm.tripType === type
-                  ? "bg-primary text-background font-bold"
+                  ? "bg-primary text-foreground font-bold"
                   : "text-foreground bg-textfield border-gray-300 border"
               }`}
               disabled // Prevents interaction
@@ -276,7 +276,7 @@ export default function FlightSearchForm() {
                   >
                     <div className="flex flex-col md:flex-row md:space-x-4">
                       <span>{label}</span>
-                      <span className="text-xs bg-primary text-background px-2 py-1 rounded-full font-bold">
+                      <span className="text-xs bg-primary text-foreground px-2 py-1 rounded-full font-bold">
                         {age}
                       </span>
                     </div>
@@ -286,7 +286,7 @@ export default function FlightSearchForm() {
                         disabled={
                           passengers[type] <= (type === "adults" ? 1 : 0)
                         } // Disable for adults at 1, others at 0
-                        className="flex justify-center  items-center p-3 h-full aspect-square border rounded-full bg-primary border-primary text-background hover:bg-background hover:text-primary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex justify-center  items-center p-3 h-full aspect-square border rounded-full bg-primary border-primary text-foreground hover:bg-background hover:text-primary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         -
                       </button>
@@ -305,7 +305,7 @@ export default function FlightSearchForm() {
                       />
                       <button
                         onClick={() => increment(type)}
-                        className="flex justify-center items-center p-3 h-full aspect-square border rounded-full bg-primary border-primary text-background hover:bg-background hover:text-primary transition-all duration-300"
+                        className="flex justify-center items-center p-3 h-full aspect-square border rounded-full bg-primary border-primary text-foreground hover:bg-background hover:text-primary transition-all duration-300"
                       >
                         +
                       </button>
@@ -323,7 +323,7 @@ export default function FlightSearchForm() {
                         className={`px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium w-full text-nowrap
             ${
               selectedClass === flightClass
-                ? "bg-primary text-background"
+                ? "bg-primary text-foreground"
                 : "text-foreground bg-textfield"
             }
           `}
@@ -379,7 +379,7 @@ export default function FlightSearchForm() {
                           key={index}
                           className={`px-4 py-2 rounded-2xl cursor-pointer transition-all ${
                             selectedIndex.from === index
-                              ? "bg-primary text-background hover:bg-primary hover:text-background"
+                              ? "bg-primary text-foreground hover:bg-primary hover:text-foreground"
                               : ""
                           }`}
                           onMouseDown={() => handleSelection("from", location)}
@@ -436,7 +436,7 @@ export default function FlightSearchForm() {
                           key={index}
                           className={`px-4 py-2 rounded-2xl cursor-pointer transition-all ${
                             selectedIndex.to === index
-                              ? "bg-primary text-background hover:bg-primary hover:text-background"
+                              ? "bg-primary text-foreground hover:bg-primary hover:text-foreground"
                               : ""
                           }`}
                           onMouseDown={() => handleSelection("to", location)}
@@ -585,7 +585,7 @@ export default function FlightSearchForm() {
               searchTerm.to &&
               searchTerm.departure &&
               searchTerm.from !== searchTerm.to
-                ? "bg-primary text-background hover:bg-background hover:text-primary hover:border-primary border-2 border-transparent"
+                ? "bg-primary text-foreground hover:bg-background hover:text-primary hover:border-primary border-2 border-transparent"
                 : "bg-gray-400 cursor-not-allowed border-2 border-transparent"
             }`}
             disabled={

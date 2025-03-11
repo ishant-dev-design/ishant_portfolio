@@ -56,7 +56,7 @@ const Experience = () => {
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
           {/* Education Section */}
           <motion.div
-            className={`p-6 border backdrop-blur-md rounded-3xl
+            className={`p-6 border backdrop-blur-sm rounded-3xl
               ${
                 theme === "light"
                   ? "bg-[#ffffff66] border-gray-300"
@@ -74,17 +74,15 @@ const Experience = () => {
             {educationData.map((edu, index) => (
               <motion.div key={index} className="mb-4">
                 <h3 className="text-xl font-semibold">{edu.degree}</h3>
-                <p className="text-md text-muted-foreground">
-                  {edu.institution}
-                </p>
-                <p className="text-sm text-muted-foreground">{edu.year}</p>
+                <p className="text-md text-foreground">{edu.institution}</p>
+                <p className="text-sm text-foreground">{edu.year}</p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Experience Section */}
           <motion.div
-            className={`p-6 border backdrop-blur-md rounded-3xl
+            className={`p-6 border backdrop-blur-sm rounded-3xl
               ${
                 theme === "light"
                   ? "bg-[#ffffff66] border-gray-300"
@@ -102,11 +100,9 @@ const Experience = () => {
             {experienceData.map((exp, index) => (
               <motion.div key={index} className="mb-4">
                 <h3 className="text-xl font-semibold">{exp.role}</h3>
-                <p className="text-md text-muted-foreground">{exp.company}</p>
-                <p className="text-sm text-muted-foreground">{exp.year}</p>
-                <p className="text-sm text-muted-foreground">
-                  {exp.description}
-                </p>
+                <p className="text-md text-foreground">{exp.company}</p>
+                <p className="text-sm text-foreground">{exp.year}</p>
+                <p className="text-sm text-foreground">{exp.description}</p>
               </motion.div>
             ))}
           </motion.div>

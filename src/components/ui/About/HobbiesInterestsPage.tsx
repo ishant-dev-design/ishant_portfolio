@@ -1,125 +1,133 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import Image from "next/image";
-import { Gamepad2, Cpu, Film, BookOpen, Music } from "lucide-react";
+import { useState, useRef } from "react";
+import {
+  useScroll,
+  motion,
+  useTransform,
+  useMotionTemplate,
+} from "framer-motion";
+import { useTheme } from "next-themes";
 
-const hobbies = [
+const data = [
   {
-    title: "Gaming & Esports",
+    title: "Gaming",
     description:
-      "Exploring the world of gaming, from competitive esports to immersive single-player experiences.",
-    icon: Gamepad2,
-    image: "/images/gaming.gif",
+      "Mastering high-stakes esports and diving into immersive single-player experiences—gaming is both a challenge and an escape.",
+    speed: 0.5,
   },
   {
-    title: "Tech Exploration",
+    title: "Tech Innovations",
     description:
-      "Diving into the latest tech innovations, from AI advancements to futuristic gadgets.",
-    icon: Cpu,
-    image: "/images/tech.gif",
+      "Exploring AI, futuristic gadgets, and groundbreaking technology—because the future isn't coming, it's already here.",
+    speed: 0.6,
   },
   {
     title: "Movies & Sci-Fi",
     description:
-      "A passion for cinema, especially sci-fi films that expand the imagination.",
-    icon: Film,
-    image: "/images/movies.gif",
+      "A deep love for cinema, especially sci-fi, where imagination meets reality, shaping bold visions of the future.",
+    speed: 0.55,
   },
   {
-    title: "Reading & Learning",
+    title: "Reading & Growth",
     description:
-      "Lifelong learning through books, articles, and new experiences.",
-    icon: BookOpen,
-    image: "/images/reading.gif",
+      "Lifelong learning through books, articles, and experiences—because every new idea is a level-up.",
+    speed: 0.67,
   },
   {
-    title: "Music",
+    title: "Music Journeys",
     description:
-      "Appreciating various genres of music, from classical compositions to modern hits.",
-    icon: Music,
-    image: "/images/music.gif",
+      "Diving into diverse genres, from timeless classics to modern hits—because music is the soundtrack to life.",
+    speed: 0.8,
   },
 ];
 
-const ParallaxHobbies = () => {
-  const scrollRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start end", "end start"],
-  });
+export default function Projects() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { theme } = useTheme();
 
   return (
-    <motion.div className="flex flex-col items-center justify-center text-foreground md:px-6 py-16">
-      <motion.div
+    <div className="relative w-full">
+      <motion.h1
+        className="text-5xl md:text-7xl font-bold text-center mb-12"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="text-center"
       >
-        <motion.h1 className="text-5xl md:text-7xl font-bold">
-          My Hobbies
-        </motion.h1>
-        <motion.p className="mt-4 text-lg md:text-xl text-foreground mx-auto max-w-4xl">
-          Exploring interests that inspire creativity, learning, and fun.
-        </motion.p>
-      </motion.div>
-
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: window.innerWidth < 768 ? 0 : 0.5 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        variants={{
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { staggerChildren: 0.1 },
-          },
-          hidden: { opacity: 0, y: 50 },
+        My Hobbies
+      </motion.h1>
+      <div
+        className="h-fit"
+        style={{
+          width: "-webkit-fill-available",
         }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 w-full"
       >
-        {hobbies.map((hobby, index) => {
-          const Icon = hobby.icon;
+        {data.map((project, i) => {
+          const { title, description, speed } = project;
+          const container = useRef(null);
+          containerRefs.current[i] = container.current;
+
+          const { scrollYProgress } = useScroll({
+            target: container,
+            offset: ["start end", `${25 / speed}vw end`],
+          });
+
+          const clipProgress = useTransform(scrollYProgress, [0, 1], [100, 0]);
+          const clip = useMotionTemplate`inset(0 ${clipProgress}% 0 0)`;
+
           return (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              whileHover={{ scale: 1.05 }}
-              transition={{
-                opacity: { duration: 0.8, ease: "easeInOut" },
-                scale: { duration: 0.3, ease: "easeInOut" },
-              }}
-              className="p-6 border border-gray-300 rounded-xl flex items-center space-x-4 hover:shadow-md transition-all duration-300"
+            <div
+              ref={container}
+              key={i}
+              className="w-full md:border-t border-accent relative"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onTouchStart={() => setHoveredIndex(i)} // Mobile touch support
+              onTouchEnd={() => setHoveredIndex(null)}
             >
-              <Image
-                src={hobby.image}
-                alt={hobby.title}
-                width={80}
-                height={80}
-                className="rounded-lg"
-              />
-              <div className="text-left">
-                <Icon className="h-8 w-8 text-primary mb-2" />
-                <motion.h3 className="text-xl font-semibold text-primary">
-                  {hobby.title}
-                </motion.h3>
-                <motion.p className="text-md text-foreground mt-1">
-                  {hobby.description}
-                </motion.p>
+              {/* Title */}
+              <div className="md:border-b border-accent cursor-default relative z-10 mt-6 md:mt-0">
+                <div className="inline-block">
+                  <motion.p
+                    className="inline-block px-6 text-4xl md:text-7xl lg:text-8xl leading-tight md:leading-[7.5vw] font-bold uppercase text-foreground relative z-10"
+                    style={{ clipPath: clip }}
+                  >
+                    {title}
+                  </motion.p>
+                  <p
+                    className={`block absolute px-6 top-0 text-4xl md:text-7xl lg:text-8xl leading-tight md:leading-[7.5vw] font-bold uppercase z-0 ${
+                      theme === "light" ? " text-black/20" : "text-white/20"
+                    }`}
+                  >
+                    {title}
+                  </p>
+                </div>
               </div>
-            </motion.div>
+
+              {/* Description (Controlled with Framer Motion) */}
+              <motion.div
+                initial={{ clipPath: "inset(50% 0 50%)" }}
+                animate={
+                  hoveredIndex === i || window.innerWidth < 764
+                    ? { clipPath: "inset(0% 0% 0%)" }
+                    : { clipPath: "inset(50% 0 50%)" }
+                }
+                transition={{ duration: 0.2, ease: [1, 0, 0, 1] }}
+                className="md:absolute z-10 top-0 left-0 w-full bg-accent flex flex-col md:flex-row justify-between items-center px-4 md:px-6 py-6 md:py-0"
+              >
+                <p className="hidden md:flex text-[#101010] uppercase font-bold text-3xl md:text-6xl lg:text-8xl leading-tight md:leading-[7.5vw] relative z-10 w-full text-center md:text-left">
+                  {title}
+                </p>
+                <p className="md:absolute right-0 h-full max-w-full md:max-w-[768px] flex items-center z-10 text-[#101010] w-full text-center md:text-left px-2 md:px-6 text-sm md:text-lg lg:text-[1vw] font-bold bg-accent">
+                  {description}
+                </p>
+              </motion.div>
+            </div>
           );
         })}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
-};
-
-export default ParallaxHobbies;
+}

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Code, Rocket, Users, Brain, Target } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const motivations = [
   {
@@ -37,6 +38,8 @@ const motivations = [
 ];
 
 const WhatDrivesMe = () => {
+  const { theme } = useTheme();
+
   return (
     <motion.div className="flex flex-col items-center justify-center text-foreground md:px-6 py-16">
       {/* Header */}
@@ -83,7 +86,12 @@ const WhatDrivesMe = () => {
               }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="p-6 border border-gray-300 rounded-xl text-center hover:shadow-md transition-all duration-300"
+              className={`p-6 border backdrop-blur-sm rounded-3xl
+                ${
+                  theme === "light"
+                    ? "bg-[#ffffff66] border-gray-300"
+                    : "bg-[#00000066] border-white/20"
+                }`}
             >
               <Icon className="h-12 w-12 text-primary mx-auto mb-4" />
               <motion.h3 className="text-xl font-semibold text-primary">

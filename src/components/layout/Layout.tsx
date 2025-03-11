@@ -6,7 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Loading from "../ui/Loading";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
+import Squares from "./Square_BG";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -26,8 +27,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         {!loading && (
           <>
             <Header />
+            <div className="fixed w-screen h-screen">
+              <Squares speed={0} squareSize={40} direction="left" />
+            </div>
             <motion.main
-              className="p-6"
+              className="p-6 z-10 pointer-events-auto"
               key={pathname}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

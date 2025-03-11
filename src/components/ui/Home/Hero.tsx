@@ -28,7 +28,7 @@ const Hero = () => {
             <Image
               width={300}
               height={300}
-              src="/profilepic.jpg"
+              src="/images/profilepic.jpg"
               alt="Profile"
               className="w-20 md:w-32 aspect-square object-cover rounded-3xl"
             />
@@ -40,7 +40,7 @@ const Hero = () => {
           {/* Playlist Card */}
           <motion.div
             transition={{ duration: 0.3 }}
-            className={`flex sm:col-span-2 flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-lg ${
+            className={`flex sm:col-span-2 flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
               theme === "light"
                 ? "bg-[#f5f3f066] border-gray-300"
                 : "bg-[#10101066] border-white/20"
@@ -71,7 +71,7 @@ const Hero = () => {
           {/* Reading Card */}
           <motion.div
             transition={{ duration: 0.3 }}
-            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-lg ${
+            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
               theme === "light"
                 ? "bg-[#f5f3f066] border-gray-300"
                 : "bg-[#10101066] border-white/20"
@@ -86,11 +86,12 @@ const Hero = () => {
             </div>
             <div>
               <Image
-                src="/book-cover.png"
+                src="/images/book-cover.png"
                 alt="Book Cover"
                 width={300}
                 height={200}
-                className="rounded-xl w-full object-cover bg-background"
+                loading="lazy"
+                className="rounded-xl w-full object-cover"
               />
             </div>
           </motion.div>
@@ -98,7 +99,7 @@ const Hero = () => {
           {/* Map Card */}
           <motion.div
             transition={{ duration: 0.3 }}
-            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-lg ${
+            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
               theme === "light"
                 ? "bg-[#f5f3f066] border-gray-300"
                 : "bg-[#10101066] border-white/20"
@@ -108,12 +109,15 @@ const Hero = () => {
             <div className="h-full relative overflow-hidden bg-accent">
               <Image
                 src={`${
-                  theme === "light" ? "/map-light.png" : "/map-dark.png"
+                  theme === "light"
+                    ? "/images/map-light.png"
+                    : "/images/map-dark.png"
                 }`}
                 alt="Map"
-                width={500}
-                height={500}
-                className="w-auto h-full bg-accent overflow-hidden mix-blend-luminosity"
+                width={300}
+                height={300}
+                loading="lazy"
+                className="w-full h-full object-cover bg-accent overflow-hidden mix-blend-luminosity"
               />
             </div>
             <div className="absolute p-4 bottom-0">

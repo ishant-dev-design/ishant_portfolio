@@ -1,13 +1,5 @@
-import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowDown,
-  Eye,
-  File,
-  FilePlus2,
-  SendHorizonal,
-  X,
-} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Eye, FilePlus2, SendHorizonal, X } from "lucide-react";
 import Image from "next/image";
 
 const ContactForm = () => {
@@ -15,12 +7,12 @@ const ContactForm = () => {
     name: "",
     email: "",
     message: "",
-    attachments: [],
   });
 
   const [attachments, setAttachments] = useState<File[]>([]);
   const [previewFile, setPreviewFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,12 +23,9 @@ const ContactForm = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-
-    const files = Array.from(e.target.files).filter(
-      (file) =>
-        file.type.startsWith("image/") || file.type === "application/pdf"
+    const files = Array.from(e.target.files).filter((file) =>
+      file.type.startsWith("image/")
     );
-
     setAttachments((prev) => [...prev, ...files]);
   };
 
@@ -44,76 +33,114 @@ const ContactForm = () => {
     setAttachments((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    return () => {
+      attachments.forEach((file) =>
+        URL.revokeObjectURL(URL.createObjectURL(file))
+      );
+    };
+  }, [attachments]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Basic validation
-    if (!formData.name.trim()) {
-      alert("Please enter your name.");
-      return;
-    }
-    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-    if (!formData.message.trim()) {
-      alert("Please enter a message.");
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill all required fields.");
       return;
     }
 
-    // Construct the email preview content
-    const emailContent = `
-      <html>
-        <head><title>Email Preview</title></head>
-        <body style="font-family: Arial, sans-serif; padding: 20px;">
-          <h2>📩 Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${formData.name}</p>
-          <p><strong>Email:</strong> ${formData.email}</p>
-          <p><strong>Message:</strong></p>
-          <p style="border-left: 4px solid #007bff; padding-left: 10px;">${
-            formData.message
-          }</p>
-  
-          <h3>📎 Attachments</h3>
-          ${
-            attachments.length > 0
-              ? attachments
-                  .map((file) =>
-                    file.type.startsWith("image/")
-                      ? `<p><strong>${
-                          file.name
-                        }</strong><br><img src="${URL.createObjectURL(
-                          file
-                        )}" style="max-width: 300px; border-radius: 10px; margin-top: 5px;"/></p>`
-                      : `<p><strong>${
-                          file.name
-                        }</strong><br><iframe src="${URL.createObjectURL(
-                          file
-                        )}" style="width: 100%; height: 300px; border: 1px solid #ccc;"></iframe></p>`
-                  )
-                  .join("")
-              : "<p>No attachments</p>"
-          }          
-        </body>
-      </html>
-    `;
+    const attachmentData = await Promise.all(
+      attachments.map((file) => {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            resolve({
+              name: file.name,
+              data: reader.result.split(",")[1], // Extract Base64 data
+            });
+          };
+        });
+      })
+    );
 
-    // Open a new window with the email preview
-    const previewWindow = window.open("", "_blank");
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        attachments: attachmentData,
+      }),
+    });
 
-    if (previewWindow) {
-      previewWindow.document.write(emailContent);
-      previewWindow.document.close();
+    const result = await response.json();
+    if (response.ok) {
+      alert("Your message has been sent!");
+      setFormData({ name: "", email: "", message: "" });
+      setAttachments([]);
     } else {
-      alert("Popup blocked! Please allow pop-ups to see the email preview.");
+      alert("Error sending message. Please try again.");
     }
   };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    let isDown = false;
+    let startX: number;
+    let scrollLeft: number;
+
+    const startDragging = (e: MouseEvent | TouchEvent) => {
+      isDown = true;
+      startX =
+        "touches" in e
+          ? e.touches[0].pageX - container.offsetLeft
+          : e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    };
+
+    const stopDragging = () => {
+      isDown = false;
+    };
+
+    const move = (e: MouseEvent | TouchEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x =
+        "touches" in e
+          ? e.touches[0].pageX - container.offsetLeft
+          : e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 2;
+      container.scrollLeft = scrollLeft - walk;
+    };
+
+    container.addEventListener("mousedown", startDragging);
+    container.addEventListener("touchstart", startDragging);
+    container.addEventListener("mouseup", stopDragging);
+    container.addEventListener("touchend", stopDragging);
+    container.addEventListener("mouseleave", stopDragging);
+    container.addEventListener("mousemove", move);
+    container.addEventListener("touchmove", move);
+
+    return () => {
+      container.removeEventListener("mousedown", startDragging);
+      container.removeEventListener("touchstart", startDragging);
+      container.removeEventListener("mouseup", stopDragging);
+      container.removeEventListener("touchend", stopDragging);
+      container.removeEventListener("mouseleave", stopDragging);
+      container.removeEventListener("mousemove", move);
+      container.removeEventListener("touchmove", move);
+    };
+  }, []);
 
   return (
     <div className="max-w-xl mx-auto rounded-2xl">
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Name Input */}
-        <div data-cursor="text" className="relative">
+        <div className="relative">
           <input
             type="text"
             name="name"
@@ -125,7 +152,6 @@ const ContactForm = () => {
           />
           {formData.name && (
             <button
-              data-cursor="default"
               type="button"
               className="absolute right-3 rounded-full p-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white hover:bg-red-600"
               onClick={() => setFormData({ ...formData, name: "" })}
@@ -134,8 +160,8 @@ const ContactForm = () => {
             </button>
           )}
         </div>
-        {/* Email Input */}
-        <div data-cursor="text" className="relative">
+
+        <div className="relative">
           <input
             type="email"
             name="email"
@@ -147,7 +173,6 @@ const ContactForm = () => {
           />
           {formData.email && (
             <button
-              data-cursor="default"
               type="button"
               className="absolute right-3 rounded-full p-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white hover:bg-red-600"
               onClick={() => setFormData({ ...formData, email: "" })}
@@ -157,8 +182,7 @@ const ContactForm = () => {
           )}
         </div>
 
-        {/* Message Textarea with Buttons */}
-        <div data-cursor="text" className="relative">
+        <div className="relative">
           <textarea
             name="message"
             value={formData.message}
@@ -166,28 +190,21 @@ const ContactForm = () => {
             placeholder="Your Message"
             rows={4}
             required
-            className="w-full border-gray-300 border px-6 py-4 pb-16 rounded-3xl outline-none ring-2 ring-transparent bg-textfield custom-scrollbar focus:ring-primary"
+            className="w-full border-gray-300 border px-6 py-4 !pb-16 rounded-3xl outline-none ring-2 ring-transparent bg-textfield custom-scrollbar focus:ring-primary resize-y"
           />
-          <div className="absolute bottom-6 left-4 flex space-x-2">
-            {/* File Upload Button */}
+          <div className="absolute w-fit bottom-6 left-4 flex space-x-2">
             <button
-              data-cursor="default"
               type="button"
               className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600"
               onClick={() => fileInputRef.current?.click()}
             >
               <FilePlus2 size={20} />
             </button>
-
-            {/* Clear Message Button */}
             {formData.message && (
               <button
-                data-cursor="default"
                 type="button"
                 className="p-2 rounded-full bg-red-500 text-white hover:bg-red-600"
-                onClick={() =>
-                  setFormData((prev) => ({ ...prev, message: "" }))
-                }
+                onClick={() => setFormData({ ...formData, message: "" })}
               >
                 <X size={20} />
               </button>
@@ -199,105 +216,84 @@ const ContactForm = () => {
           type="file"
           ref={fileInputRef}
           multiple
-          accept="image/png, image/jpeg, image/jpg, application/pdf"
+          accept="image/png, image/jpeg, image/jpg"
           className="hidden"
           onChange={handleFileChange}
         />
 
         {attachments.length > 0 && (
-          <div className="p-5 bg-textfield rounded-3xl border-gray-300 border">
-            <div className="p-1 bg-textfield rounded-lg overflow-x-auto file-scrollbar">
-              <div className="flex space-x-3 w-max">
-                {attachments.map((file, index) => (
-                  <div
-                    key={index}
-                    className="relative flex flex-col items-center cursor-pointer w-24 h-24 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0"
+          <div
+            ref={scrollContainerRef}
+            className="bg-textfield rounded-3xl border-gray-300 border overflow-x-auto custom-scrollbar cursor-grab"
+          >
+            <div className="p-5 flex space-x-3 w-max">
+              {attachments.map((file, index) => (
+                <div
+                  key={index}
+                  className="relative w-24 h-24 bg-gray-200 rounded-lg overflow-hidden"
+                >
+                  <Image
+                    width={100}
+                    height={100}
+                    src={URL.createObjectURL(file)}
+                    alt={file.name}
+                    className="w-full h-full object-cover !pointer-events-none !select-none"
+                  />
+                  <button
+                    type="button"
+                    className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-full hover:bg-red-600"
+                    onClick={() => removeFile(index)}
                   >
-                    {/* Image Preview */}
-                    {file.type.startsWith("image/") ? (
-                      <Image
-                        width={100}
-                        height={100}
-                        src={URL.createObjectURL(file)}
-                        alt={file.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      // PDF Preview (using iframe)
-                      <iframe
-                        src={URL.createObjectURL(file)}
-                        className="w-full h-full"
-                        title={file.name}
-                      ></iframe>
-                    )}
-
-                    {/* Buttons: Preview & Remove */}
-                    <div className="absolute bottom-1 flex space-x-2 bg-white p-1 rounded-full">
-                      {/* Preview Button */}
-                      <button
-                        type="button"
-                        className="p-1 rounded-full bg-blue-500 text-white hover:bg-blue-600"
-                        onClick={() => setPreviewFile(file)}
-                      >
-                        <Eye size={16} />
-                      </button>
-
-                      {/* Remove Button */}
-                      <button
-                        type="button"
-                        className="p-1 rounded-full bg-red-500 text-white hover:bg-red-600"
-                        onClick={() => removeFile(index)}
-                      >
-                        <X size={16} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                    <X size={16} />
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         )}
 
-        {/* File Preview Modal */}
-        {previewFile && (
-          <div className="fixed inset-0 -top-4 bg-black bg-opacity-80 flex items-center justify-center z-[5000]">
-            <div className="relative p-4 rounded-3xl bg-background">
-              {previewFile.type.startsWith("image/") ? (
-                <Image
-                  src={URL.createObjectURL(previewFile)}
-                  alt="Preview"
-                  width={0}
-                  height={0}
-                  style={{
-                    width: "auto",
-                    height: "auto",
-                    maxWidth: "90vw",
-                    maxHeight: "80vh",
-                  }}
-                  className="rounded-3xl object-contain"
-                />
-              ) : (
-                <iframe
-                  src={URL.createObjectURL(previewFile)}
-                  className="w-[90vw] h-[80vh] rounded-3xl"
-                  title="File Preview"
-                />
-              )}
-              <button
-                className="mt-4 w-fit py-2 px-6 rounded-full h-full text-center border border-red-500 bg-red-500 hover:text-red-500 hover:bg-transparent"
-                onClick={() => setPreviewFile(null)}
-              >
-                Close Preview
-              </button>
-            </div>
-          </div>
+        {attachments.length > 0 && (
+          <script>
+            {`
+              (function() {
+                const container = document.querySelector('[ref="scrollContainerRef"]');
+                if (!container) return;
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                const startDragging = (e) => {
+                  isDown = true;
+                  startX = e.pageX - container.offsetLeft;
+                  scrollLeft = container.scrollLeft;
+                };
+
+                const stopDragging = () => {
+                  isDown = false;
+                };
+
+                const move = (e) => {
+                  if (!isDown) return;
+                  e.preventDefault();
+                  const x = e.pageX - container.offsetLeft;
+                  const walk = (x - startX) * 2;
+                  container.scrollLeft = scrollLeft - walk;
+                };
+
+                container.addEventListener('mousedown', startDragging);
+                container.addEventListener('mouseup', stopDragging);
+                container.addEventListener('mouseleave', stopDragging);
+                container.addEventListener('mousemove', move);
+              })();
+            `}
+          </script>
         )}
 
         {/* Submit Button */}
         <button
           data-cursor="pointer"
           type="submit"
-          className="w-full px-6 py-3 flex justify-center items-center rounded-full bg-accent text-background hover:bg-background hover:border-accent border-2 border-transparent font-semibold transition-colors text-md group hover:text-accent duration-300"
+          className="w-full px-6 py-3 flex justify-center items-center rounded-full bg-accent text-[#101010] hover:bg-background hover:border-accent border-2 border-transparent font-semibold transition-colors text-md group hover:text-accent duration-300"
         >
           Send Message
           <span className="overflow-hidden max-w-fit w-0 group-hover:w-12 group-hover:pl-3 transition-all duration-300">

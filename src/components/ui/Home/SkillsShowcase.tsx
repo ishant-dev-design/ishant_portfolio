@@ -10,6 +10,7 @@ import {
   Terminal,
   Github,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface Skill {
   name: string;
@@ -132,13 +133,15 @@ const skillCategories: SkillCategory[] = [
 ];
 
 const SkillsShowcase: React.FC = () => {
+  const { theme } = useTheme();
+
   return (
-    <motion.div className="flex flex-col items-center justify-center text-foreground py-16">
+    <motion.div className="flex flex-col items-center justify-center text-foreground">
       {/* Section Header */}
       <motion.h1
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.8, ease: "circInOut" }}
         className="text-5xl md:text-7xl font-bold text-center"
       >
@@ -184,7 +187,11 @@ const SkillsShowcase: React.FC = () => {
                       delay: idx * 0.1,
                       ease: "circInOut",
                     }}
-                    className="p-6 group rounded-3xl text-center"
+                    className={`p-6 group rounded-3xl text-center backdrop-blur-sm border ${
+                      theme === "light"
+                        ? "bg-[#f5f3f066] border-gray-300 hover:bg-[#758cff11]"
+                        : "bg-[#10101066] border-white/20 hover:bg-[#ccff0011]"
+                    }`}
                   >
                     <Icon className="h-12 w-12 text-primary mx-auto mb-4 group-hover:text-accent transition-all" />
                     <motion.h3 className="text-xl font-semibold text-primary group-hover:text-accent transition-all">

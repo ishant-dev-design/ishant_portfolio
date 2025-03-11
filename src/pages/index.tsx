@@ -11,11 +11,9 @@ import TextDesign from "@/components/ui/Home/TextDesign";
 import Hero from "@/components/ui/Home/Hero";
 import Carousel from "@/components/ui/Stack";
 
-
-
 export default function Home() {
   return (
-    <motion.div className="bg-background max-w-7xl mx-auto">
+    <motion.div className="bg-transparent max-w-7xl mx-auto space-y-16 md:space-y-64">
       <Hero />
       <TextDesign />
       <Workwithme />

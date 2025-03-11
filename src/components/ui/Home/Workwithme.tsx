@@ -7,23 +7,23 @@ import Link from "next/link";
 
 const aboutMeDetails = [
   {
-    image: "/pixel_perfect.gif",
+    image: "/images/pixel_perfect.gif",
     heading: "Pixel-Perfect Designs",
     content: "I craft visually stunning UI/UX with a user-first approach.",
   },
   {
-    image: "/performance.gif",
+    image: "/images/performance.gif",
     heading: "Performance & Optimization",
     content: "My expertise ensures blazing-fast, smooth applications.",
   },
   {
-    image: "/scalable.gif",
+    image: "/images/scalable.gif",
     heading: "Scalable Applications",
     content:
       "I ensure scalable, efficient, and robust solutions that grow with your business needs.",
   },
   {
-    image: "/team.gif",
+    image: "/images/team.gif",
     heading: "Collaborative & Agile",
     content:
       "I work seamlessly with teams, following Agile methodologies and using Git for version control.",
@@ -33,7 +33,7 @@ const aboutMeDetails = [
 const Workwithme = () => {
   return (
     <motion.div
-      className="flex flex-col items-center justify-center w-full h-auto gap-6 py-12"
+      className="flex flex-col items-center justify-center w-full h-auto gap-6"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -94,7 +94,7 @@ const Workwithme = () => {
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="px-6 py-3 rounded-full bg-accent text-background text-lg font-medium flex items-center hover:bg-opacity-80 transition-all"
+          className="px-6 py-3 rounded-full bg-accent text-[#101010] text-lg font-medium flex items-center hover:bg-opacity-80 transition-all"
         >
           View My Work <ArrowUpRight className="ml-2" />
         </motion.button>

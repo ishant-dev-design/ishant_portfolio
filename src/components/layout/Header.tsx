@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import TextPressure from "../ui/TextPressure";
-import { useCursor } from "./CustomCursor";
 import { ArrowRight, Headset, Mailbox, PawPrintIcon } from "lucide-react";
 import ToggleTheme from "../ui/ToggleTheme";
 
@@ -30,7 +29,7 @@ export default function Header() {
       <button
         data-cursor="pointer"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-[1000] p-2.5 text-black text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
+        className="fixed top-4 right-4 z-[1000] p-2.5 text-[#101010] text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
       >
         <label className="hamburger">
           <input type="checkbox" checked={isOpen} readOnly className="hidden" />
@@ -46,10 +45,10 @@ export default function Header() {
           <AnimatePresence mode="wait">
             <motion.div
               key={isOpen ? "CLOSE" : "MENU"}
-              initial={{ y: -30 }}
+              initial={{ y: -20 }}
               animate={{ y: 0 }}
-              exit={{ y: 30 }}
-              transition={{ duration: 0.3, ease: [1, 0, 0, 1] }}
+              exit={{ y: 20 }}
+              transition={{ duration: 0.3, ease: "circInOut" }}
               className="w-12"
             >
               {isOpen ? "CLOSE" : "MENU"}
@@ -115,11 +114,11 @@ export default function Header() {
 
             {/* Footer Links */}
             <motion.div
-              className="absolute bottom-6 left-6 text-xs text-black"
+              className="absolute bottom-6 left-6 text-xs text-[#101010]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [1, 0, 0, 1] }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [1, 0, 0, 1] }}
             >
               <motion.div
                 data-cursor="pointer"
@@ -193,10 +192,10 @@ export default function Header() {
             {/* Contact Info */}
             <motion.div
               className="absolute bottom-6 right-6 text-xs text-black"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [1, 0, 0, 1] }}
             >
               <motion.div
                 data-cursor="pointer"

@@ -13,8 +13,10 @@ export default function Resume() {
           My Resume
         </AnimatedHeading>
       </motion.div>
-      <ResumeShowcase />
-      <GetInTouch />
+      <div className="space-y-64">
+        <ResumeShowcase />
+        <GetInTouch />
+      </div>
     </motion.div>
   );
 }

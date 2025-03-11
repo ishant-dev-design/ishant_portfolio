@@ -24,9 +24,10 @@ const GetInTouch = () => {
         className="w-full md:w-1/3 flex justify-center"
       >
         <Image
-          src="/build.gif"
+          src="/images/build.gif"
           alt="Let's Connect"
           width={400}
+          loading="lazy"
           height={400}
           className="rounded-xl object-cover"
         />
@@ -72,7 +73,7 @@ const GetInTouch = () => {
               data-cursor="pointer"
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 rounded-full bg-accent text-background text-lg font-medium flex items-center"
+              className="px-6 py-3 rounded-full bg-accent text-[#101010] text-lg font-medium flex items-center"
             >
               Contact Me <ArrowRight className="ml-2" />
             </motion.button>

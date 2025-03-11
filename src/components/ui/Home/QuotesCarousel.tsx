@@ -67,10 +67,10 @@ const QuotesCarousel = () => {
 
   return (
     <motion.div
-      className="relative w-full h-fit flex flex-col justify-center items-center overflow-hidden my-32"
+      className="relative w-full flex flex-col justify-center items-center overflow-hidden my-64"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.5 }}
       variants={{
         visible: {
           opacity: 1,
@@ -114,25 +114,25 @@ const QuotesCarousel = () => {
             </motion.p>
           </motion.div>
         </AnimatePresence>
-        <div className="flex bottom-6 right-6 gap-2 p-3 justify-end">
+        <div className="flex bottom-6 right-6 gap-2 p-3 justify-center">
           <button
             onClick={() => handleClick("prev")}
-            className="p-6 rounded-full bg-transparent w-fit flex justify-center"
+            className="p-6 rounded-full bg-transparent w-fit flex justify-center border border-accent text-accent"
           >
             <ArrowLeft size={24} />
           </button>
           <button
             onClick={() => handleClick("next")}
-            className="p-6 rounded-full bg-transparent relative w-fit flex justify-center"
+            className="p-6 rounded-full bg-transparent relative w-fit flex justify-center border border-accent"
           >
-            <ArrowRight size={24} className="relative z-0 text-foreground" />
+            <ArrowRight size={24} className="relative z-0 text-accent" />
             <motion.div
-              className="absolute inset-0 rounded-full bg-foreground z-0 flex justify-center items-center"
+              className="absolute inset-0 rounded-full bg-accent z-0 flex justify-center items-center"
               style={{
                 clipPath: `inset(${100 - progress}% 0 0 0)`,
               }}
             >
-              <ArrowRight size={24} className="relative z-10 text-background" />
+              <ArrowRight size={24} className="relative z-10 text-[#101010]" />
             </motion.div>
           </button>
         </div>

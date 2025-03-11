@@ -55,7 +55,7 @@ const pets = () => {
               delay: index * 0.1,
               ease: "easeInOut",
             }}
-            className="rounded-3xl shadow-lg p-6 flex flex-col justify-between items-center text-center relative"
+            className="rounded-3xl p-6 flex flex-col justify-between items-center text-center relative"
           >
             <Stack
               randomRotation={true}
@@ -76,7 +76,7 @@ const pets = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-accent text-background text-xs font-semibold px-6 py-3 rounded-full mt-4"
+                className="bg-accent text-foreground text-xs font-semibold px-6 py-3 rounded-full mt-4"
               >
                 Fun Fact: {pet.funFact}
               </motion.div>

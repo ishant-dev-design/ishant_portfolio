@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <motion.div className="bg-background max-w-7xl mx-auto">
+    <motion.div className="max-w-7xl mx-auto">
       <motion.div className="flex pt-16 md:pt-24 pb-12 justify-center w-full">
         <AnimatedHeading className="text-3xl md:text-5xl lg:text-8xl text-foreground text-center">
           Let&#39;s Connect.

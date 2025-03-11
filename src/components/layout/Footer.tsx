@@ -46,7 +46,7 @@ const Footer = memo(() => {
 
   return (
     <motion.footer className="relative text-center w-full flex justify-center z-[60] max-w-7xl mx-auto">
-      <motion.div className="flex flex-col w-full bg-background text-foreground rounded-3xl p-3 z-10">
+      <motion.div className="flex flex-col w-full text-foreground rounded-3xl p-3 z-10">
         <motion.div className="flex h-full overflow-hidden w-full">
           <motion.div
             className="text-[clamp(1rem,14vw,12rem)] text-center w-full flex text-accent"

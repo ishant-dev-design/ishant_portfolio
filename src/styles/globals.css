@@ -6,7 +6,7 @@
 
 :root {
   /* Light Mode (Default) */
-  --color-primary: #000; /* Deep Charcoal Gray */
+  --color-primary: #101010; /* Deep Charcoal Gray */
   --color-secondary: #3a3939; /* Slightly Lighter Gray */
   --color-accent: #758cff; /* Neon Blue-Purple */
   --color-background: #f5f3f0; /* Soft Off-White */
@@ -125,6 +125,7 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 0px;
+  height: 0px;
 }
 
 .file-scrollbar::-webkit-scrollbar {
@@ -141,6 +142,6 @@ body {
 }
 
 .file-scrollbar::-webkit-scrollbar-track {
-  margin: 5px !important;
+  margin: 25px !important;
   background: transparent;
 }

@@ -3,6 +3,8 @@ import type { Config } from "tailwindcss";
 export default {
   safelist: ["cursor-none"],
   content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -26,6 +28,15 @@ export default {
       spacing: {
         section: "var(--spacing-section)",
         container: "var(--spacing-container)",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 15s linear infinite",
       },
     },
   },

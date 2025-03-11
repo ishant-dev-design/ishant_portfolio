@@ -65,7 +65,7 @@ const Projects = () => {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 whileHover={{ scale: 1.05 }}
-                className="px-6 py-3 mt-4 rounded-full bg-accent text-background text-lg font-medium flex items-center"
+                className="px-6 py-3 mt-4 rounded-full bg-accent text-foreground text-lg font-medium flex items-center"
               >
                 View Project <ArrowUpRight className="ml-2" />
               </motion.button>

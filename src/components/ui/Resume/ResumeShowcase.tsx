@@ -14,9 +14,9 @@ const ResumeShowcase = () => {
         transition={{ duration: 0.8 }}
       >
         <Image
-          width={400}
-          height={400}
-          src="/resume.png"
+          width={1000}
+          height={1000}
+          src="/images/resume.png"
           alt="Resume"
           className="object-cover rounded-xl mx-auto mb-12"
         />
@@ -25,9 +25,9 @@ const ResumeShowcase = () => {
       {/* Download Resume Button */}
       <motion.div className="flex justify-center pb-8">
         <a
-          href="/resume.pdf" // Path to resume file
-          download="Ishant_Resume.pdf" // Suggested file name
-          className="flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-background text-lg font-semibold hover:bg-opacity-80 transition"
+          href="/resume.pdf"
+          download="Ishant_Resume.pdf"
+          className="flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-[#101010] text-lg font-semibold hover:bg-opacity-80 transition"
         >
           <LucideDownload className="w-5 h-5" />
           Download Resume
