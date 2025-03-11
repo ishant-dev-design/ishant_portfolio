@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-three/fiber": "^9.1.0",
     "@react-three/postprocessing": "^3.0.4",
+    "@vercel/speed-insights": "^1.2.0",
     "adm-zip": "^0.5.16",
     "dayjs": "^1.11.13",
     "flubber": "^0.4.2",
@@ -26,7 +27,8 @@
     "react-datepicker": "^8.1.0",
     "react-dom": "^19.0.0",
     "react-swipeable": "^7.0.2",
-    "three": "^0.174.0"
+    "three": "^0.174.0",
+    "ua-parser-js": "^2.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

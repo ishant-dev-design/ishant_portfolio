@@ -31,29 +31,46 @@ export default async function handler(
       },
     });
 
-    // Send email to admin
+    const timestamp = new Date().toLocaleString("en-US", {
+      timeZone: "Asia/Kolkata",
+    });
+
+    // Admin Email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: "ishant121003@gmail.com",
       subject: "New Contact Form Submission",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border-radius: 12px; background-color: #0d0d0d; color: #fff;">
+          <h2 style="color: #9eff00; text-align: center;">New Contact Submission</h2>
+          <div style="padding: 15px; border-radius: 12px; background: #1a1a1a;">
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message}</p>
+            <p style="text-align: right; font-size: 12px; color: #9eff00;">Timestamp: ${timestamp}</p>
+          </div>
+        </div>
+      `,
     });
 
-    // Send confirmation email to user
+    // User Email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Thank You for Contacting Us!",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
-          <h2 style="color: #333; text-align: center;">Thank You for Reaching Out!</h2>
-          <p style="color: #555;">Hello <strong>${name}</strong>,</p>
-          <p style="color: #555;">We have received your message and will get back to you as soon as possible.</p>
-          <div style="border-left: 4px solid #007bff; padding-left: 10px; margin: 20px 0; color: #333;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border-radius: 12px; background-color: #0d0d0d; color: #fff;">
+          <h2 style="color: #9eff00; text-align: center;">Thank You for Reaching Out!</h2>
+          <p style="text-align: center;">Hello <strong>${name}</strong>,</p>
+          <p style="text-align: center;">We have received your message and will get back to you as soon as possible.</p>
+          <div style="padding: 15px; border-radius: 12px; background: #1a1a1a; text-align: center;">
             <p><strong>Your Message:</strong></p>
             <p>${message}</p>
           </div>
-          <p style="color: #555;">Best Regards,<br/><strong>Your Company Name</strong></p>
+          <div style="text-align: center; margin-top: 20px;">
+            <a href="https://yourportfolio.com" style="padding: 10px 20px; border-radius: 12px; background-color: #9eff00; color: #0d0d0d; text-decoration: none; font-weight: bold;">Visit Portfolio</a>
+          </div>
         </div>
       `,
     });
