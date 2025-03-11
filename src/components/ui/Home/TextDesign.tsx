@@ -7,7 +7,7 @@ const TextDesign = () => {
   return (
     <motion.div className="h-fit flex justify-center items-center max-w-5xl mx-auto">
       <motion.div
-        className="relative w-full h-fit flex flex-col rounded-3xl overflow-visible -mt-12 md:-mt-48"
+        className="relative w-full h-fit flex flex-col rounded-3xl overflow-visible "
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
