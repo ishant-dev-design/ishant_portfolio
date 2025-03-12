@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const ResumeShowcase = () => {
   return (
-    <div className="overflow-hidden w-full py-6 max-w-4xl mx-auto">
+    <div className="overflow-hidden w-full py-6 max-w-2xl mx-auto">
       <motion.div
         className="relative w-full rounded-lg overflow-hidden"
         initial={{ y: -50, opacity: 0 }}

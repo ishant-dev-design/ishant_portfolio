@@ -4,7 +4,13 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import TextPressure from "../ui/TextPressure";
-import { ArrowRight, Headset, Mailbox, PawPrintIcon } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpenText,
+  Headset,
+  Mailbox,
+  PawPrintIcon,
+} from "lucide-react";
 import ToggleTheme from "../ui/ToggleTheme";
 
 const navItems = [
@@ -114,7 +120,7 @@ export default function Header() {
 
             {/* Footer Links */}
             <motion.div
-              className="absolute bottom-6 left-6 text-xs text-[#101010]"
+              className="absolute bottom-3 left-3 md:bottom-6 md:left-6 text-xs text-[#101010]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
@@ -177,21 +183,38 @@ export default function Header() {
               </motion.div>
             </motion.div>
 
-            <motion.div className="flex text-nowrap justify-center items-center md:flex-row mt-4 w-full">
+            <motion.div className="flex text-nowrap justify-center items-center md:flex-row md:mt-4 w-full">
               <ToggleTheme />
             </motion.div>
-            <Link href="/pets" data-cursor="pointer">
-              <motion.button
-                className={`flex items-center px-4 py-2 rounded-full gap-2 transition-colors bg-background text-foreground`}
-              >
-                <PawPrintIcon />
-                <span className="inline">meet my pets</span>
-              </motion.button>
-            </Link>
+            <motion.div className="flex flex-row text-nowrap justify-center items-center md:mt-4 w-full gap-2 md:gap-6">
+              <Link href="/pets" data-cursor="pointer">
+                <motion.button
+                  className={`flex items-center px-4 py-2 rounded-full gap-2 transition-colors bg-background text-foreground`}
+                >
+                  <PawPrintIcon />
+                  <span className="inline-flex">
+                    <span className="hidden md:flex">meet my companions</span>
+                    <span className="flex md:hidden">pets</span>
+                  </span>
+                </motion.button>
+              </Link>
+              <div className="hidden md:flex">or perhaps</div>
+              <Link href="/blogs" data-cursor="pointer">
+                <motion.button
+                  className={`flex items-center px-4 py-2 rounded-full gap-2 transition-colors bg-background text-foreground`}
+                >
+                  <BookOpenText />
+                  <span className="inline">
+                    <span className="hidden md:flex">a little reading..</span>
+                    <span className="flex md:hidden">blogs</span>
+                  </span>
+                </motion.button>
+              </Link>
+            </motion.div>
 
             {/* Contact Info */}
             <motion.div
-              className="absolute bottom-6 right-6 text-xs text-black"
+              className="absolute bottom-3 right-3 md:bottom-6 md:right-6 text-xs text-black"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}

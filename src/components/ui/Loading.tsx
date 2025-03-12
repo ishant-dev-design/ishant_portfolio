@@ -55,7 +55,7 @@ export default function Loading({ onLoaded }: LoadingProps) {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      <AnimatedHeading className="text-4xl md:text-6xl text-accent font-bold mb-6">
+      <AnimatedHeading className="text-4xl md:text-6xl text-accent font-bold mb-6 justify-center items-center">
         Loading your experience...
       </AnimatedHeading>
       <div className="relative w-full h-fit flex items-center justify-center overflow-hidden px-6">
