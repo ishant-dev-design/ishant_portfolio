@@ -72,7 +72,7 @@ export default async function handler(
         <div style="display: inline-block; width: 30%; margin: 5px; padding: 10px; background: #eee; border-radius: 10px; text-align: center;">
           <h4>${blog.title}</h4>
           <p>${blog.excerpt}</p>
-          <a href="https://yourportfolio.com/blogs/${blog.slug}" style="color: #007bff; text-decoration: none;">Read More</a>
+          <a href="https://ishant-dev-design.vercel.app/blogs/${blog.slug}" style="color: #007bff; text-decoration: none;">Read More</a>
         </div>
       `
       )
@@ -94,10 +94,10 @@ export default async function handler(
           </div>
 
           <div style="text-align: center; margin-top: 20px;">
-            <a href="https://yourportfolio.com" style="padding: 10px 20px; border-radius: 12px; background-color: #007bff; color: #fff; text-decoration: none; font-weight: bold;">Visit My Portfolio</a>
+            <a href="https://ishant-dev-design.vercel.app" style="padding: 10px 20px; border-radius: 12px; background-color: #007bff; color: #fff; text-decoration: none; font-weight: bold;">Visit My Portfolio</a>
           </div>
           
-          <p style="text-align: center; margin-top: 10px;">You can also chat with me on <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" style="color: #25D366; text-decoration: none;">WhatsApp</a>.</p>
+          <p style="text-align: center; margin-top: 10px;">You can also chat with me on <a href="https://wa.me/+919718022115" style="color: #25D366; text-decoration: none;">WhatsApp</a>.</p>
         </div>
       `,
     });
