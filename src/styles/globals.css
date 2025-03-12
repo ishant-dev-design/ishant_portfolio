@@ -6,13 +6,15 @@
 
 :root {
   /* Light Mode (Default) */
-  --color-primary: #101010; /* Deep Charcoal Gray */
-  --color-secondary: #3a3939; /* Slightly Lighter Gray */
-  --color-accent: #758cff; /* Neon Blue-Purple */
-  --color-background: #f5f3f0; /* Soft Off-White */
-  --color-foreground: #101010; /* Dark Gray for Contrast */
-  --color-textfield: #ffffff; /* White for Text Inputs */
-  --color-pointer: #e4e2e0; /* Slightly Lighter Gray */
+  --color-primary: #101010;
+  --color-secondary: #3a3939;
+  --color-accent: #758cff;
+  --color-background: #f5f3f0;
+  --color-foreground: #101010;
+  --color-textfield: #ffffff;
+  --color-backgroundblur: #f5f3f066;
+  --color-accentblur: #758cff11;
+  --color-borderclr: #e0e0e0;
 
   /* Typography */
   --font-sans: "Space Grotesk", sans-serif;
@@ -34,13 +36,15 @@ body,
 
 /* Dark Mode Overrides */
 .dark {
-  --color-primary: #f5f3f0; /* Soft Off-White (Reversed) */
-  --color-secondary: #d4d0c8; /* Muted Light Gray */
-  --color-accent: #ccff00; /* Neon Yellow-Green */
-  --color-background: #101010; /* Deep Charcoal Gray */
-  --color-foreground: #f5f3f0; /* Soft Off-White */
-  --color-textfield: #000; /* Slightly Lighter Gray */
-  --color-pointer: #ccff00; /* Slightly Lighter Gray */
+  --color-primary: #f5f3f0;
+  --color-secondary: #d4d0c8;
+  --color-accent: #ccff00;
+  --color-background: #101010;
+  --color-foreground: #f5f3f0;
+  --color-textfield: #000;
+  --color-backgroundblur: #10101066;
+  --color-accentblur: #ccff0011;
+  --color-borderclr: #f5f3f030;
 }
 
 body {

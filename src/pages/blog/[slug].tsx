@@ -69,7 +69,7 @@ const BlogPage = ({ blog }: { blog: Blog }) => {
       {/* Main Layout (Sidebar + Blog Content) */}
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Left Sidebar (Dynamic TOC) */}
-        <aside className="w-full lg:w-1/4 sticky top-20 h-fit rounded-lg py-2">
+        <aside className="w-full lg:w-1/4 lg:sticky top-20 h-fit rounded-lg py-2">
           <h3 className="text-xl font-semibold mb-4">CONTENTS</h3>{" "}
           {/* Changed h2 to h3 */}
           <ul className="space-y-3 text-foreground">

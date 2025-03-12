@@ -61,11 +61,7 @@ const Hero = () => {
           {/* Playlist Card */}
           <motion.div
             transition={{ duration: 0.3 }}
-            className={`flex sm:col-span-2 flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
-              theme === "light"
-                ? "bg-[#f5f3f066] border-gray-300"
-                : "bg-[#10101066] border-white/20"
-            }`}
+            className={`flex sm:col-span-2 flex-col bg-backgroundblur justify-between rounded-3xl border border-borderclr overflow-hidden backdrop-blur-sm`}
           >
             <h3 className="p-4 text-sm text-gray-500">Listen with me</h3>
             <div
@@ -93,11 +89,7 @@ const Hero = () => {
           {/* Reading Card */}
           <motion.div
             transition={{ duration: 0.3 }}
-            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
-              theme === "light"
-                ? "bg-[#f5f3f066] border-gray-300"
-                : "bg-[#10101066] border-white/20"
-            }`}
+            className={`flex flex-col bg-backgroundblur justify-between rounded-3xl border border-borderclr overflow-hidden backdrop-blur-sm`}
           >
             <div className="p-4">
               <h3 className="text-sm text-gray-500">What I&apos;m reading</h3>
@@ -114,11 +106,7 @@ const Hero = () => {
           {/* Map Card */}
           <motion.div
             transition={{ duration: 0.3 }}
-            className={`flex flex-col justify-between rounded-3xl border border-accent overflow-hidden backdrop-blur-sm ${
-              theme === "light"
-                ? "bg-[#f5f3f066] border-gray-300"
-                : "bg-[#10101066] border-white/20"
-            }`}
+            className={`flex flex-col bg-backgroundblur justify-between rounded-3xl border border-borderclr overflow-hidden backdrop-blur-sm`}
           >
             <h3 className="p-4 text-sm text-gray-500">Map</h3>
             <div className="h-full relative overflow-hidden bg-accent">

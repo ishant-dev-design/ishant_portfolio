@@ -187,11 +187,7 @@ const SkillsShowcase: React.FC = () => {
                       delay: idx * 0.1,
                       ease: "circInOut",
                     }}
-                    className={`p-6 group rounded-3xl text-center backdrop-blur-sm border ${
-                      theme === "light"
-                        ? "bg-[#f5f3f066] border-gray-300 hover:bg-[#758cff11]"
-                        : "bg-[#10101066] border-white/20 hover:bg-[#ccff0011]"
-                    }`}
+                    className={`p-6 group rounded-3xl text-center border-borderclr bg-backgroundblur backdrop-blur-sm hover:bg-accentblur border`}
                   >
                     <Icon className="h-12 w-12 text-primary mx-auto mb-4 group-hover:text-accent transition-all" />
                     <motion.h3 className="text-xl font-semibold text-primary group-hover:text-accent transition-all">

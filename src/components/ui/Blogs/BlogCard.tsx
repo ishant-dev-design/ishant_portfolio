@@ -14,11 +14,7 @@ const BlogCard = ({ title, slug, date, excerpt }: BlogCardProps) => {
   return (
     <Link href={`/blog/${slug}`} className="block">
       <div
-        className={`flex flex-col md:flex-row gap-6 p-6 rounded-3xl backdrop-blur-sm border transition h-full ${
-          theme === "light"
-            ? "bg-[#f5f3f066] border-gray-300 hover:bg-[#758cff11]"
-            : "bg-[#10101066] border-white/20 hover:bg-[#ccff0011]"
-        }`}
+        className={`flex flex-col md:flex-row gap-6 p-6 rounded-3xl bg-backgroundblur border-borderclr hover:bg-accentblur backdrop-blur-sm border transition h-full`}
       >
         <div className="flex flex-col w-full justify-between gap-2">
           <h2 className="text-2xl font-semibold">{title}</h2>

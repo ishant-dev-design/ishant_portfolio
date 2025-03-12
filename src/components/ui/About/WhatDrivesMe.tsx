@@ -86,12 +86,7 @@ const WhatDrivesMe = () => {
               }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className={`p-6 border backdrop-blur-sm rounded-3xl
-                ${
-                  theme === "light"
-                    ? "bg-[#ffffff66] border-gray-300"
-                    : "bg-[#00000066] border-white/20"
-                }`}
+              className={`p-6 border backdrop-blur-sm rounded-3xl bg-backgroundblur border-borderclr`}
             >
               <Icon className="h-12 w-12 text-primary mx-auto mb-4" />
               <motion.h3 className="text-xl font-semibold text-primary">

@@ -19,6 +19,9 @@ export default {
         background: "var(--color-background)",
         foreground: "var(--color-foreground)",
         textfield: "var(--color-textfield)",
+        backgroundblur: "var(--color-backgroundblur)",
+        accentblur: "var(--color-accentblur)",
+        borderclr: "var(--color-borderclr)",
       },
       fontFamily: {
         sans: "var(--font-sans)",

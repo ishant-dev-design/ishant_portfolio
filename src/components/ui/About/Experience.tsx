@@ -69,12 +69,7 @@ const Experience = () => {
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Education Section */}
           <motion.div
-            className={`p-6 border backdrop-blur-sm rounded-3xl
-              ${
-                theme === "light"
-                  ? "bg-[#ffffff66] border-gray-300"
-                  : "bg-[#00000066] border-white/20"
-              }`}
+            className={`p-6 border backdrop-blur-sm rounded-3xl bg-backgroundblur border-borderclr`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -112,12 +107,7 @@ const Experience = () => {
 
           {/* Experience Section */}
           <motion.div
-            className={`p-6 border backdrop-blur-sm rounded-3xl
-              ${
-                theme === "light"
-                  ? "bg-[#ffffff66] border-gray-300"
-                  : "bg-[#00000066] border-white/20"
-              }`}
+            className={`p-6 border backdrop-blur-sm rounded-3xl bg-backgroundblur border-borderclr`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

@@ -15,12 +15,7 @@ const Story = () => {
       >
         <motion.div className="flex flex-col justify-end z-10 mt-3 md:-mr-12 col-span-2 order-3 md:order-2">
           <motion.div
-            className={`flex flex-col justify-end text-start space-y-6 max-h-fit p-6 border backdrop-blur-md rounded-3xl 
-    ${
-      theme === "light"
-        ? "bg-[#ffffff66] border-gray-300"
-        : "bg-[#00000066] border-white/20"
-    }`}
+            className={`flex flex-col bg-backgroundblur border-borderclr justify-end text-start space-y-6 max-h-fit p-6 border backdrop-blur-md rounded-3xl`}
             transition={{
               staggerChildren: 0.2,
               duration: 0.6,
