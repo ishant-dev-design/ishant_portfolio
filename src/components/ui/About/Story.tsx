@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
 
 const Story = () => {
-  const { theme } = useTheme();
 
   return (
     <motion.div className="h-fit flex justify-center items-center">

@@ -1,4 +1,3 @@
-import { useTheme } from "next-themes";
 import Link from "next/link";
 
 interface BlogCardProps {
@@ -9,7 +8,6 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ title, slug, date, excerpt }: BlogCardProps) => {
-  const { theme } = useTheme();
 
   return (
     <Link href={`/blog/${slug}`} className="block">

@@ -10,7 +10,6 @@ import {
   Terminal,
   Github,
 } from "lucide-react";
-import { useTheme } from "next-themes";
 
 interface Skill {
   name: string;
@@ -133,8 +132,6 @@ const skillCategories: SkillCategory[] = [
 ];
 
 const SkillsShowcase: React.FC = () => {
-  const { theme } = useTheme();
-
   return (
     <motion.div className="flex flex-col items-center justify-center text-foreground">
       {/* Section Header */}

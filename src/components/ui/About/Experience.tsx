@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, GraduationCap } from "lucide-react";
-import { useTheme } from "next-themes";
 
 const educationData = [
   {
@@ -40,7 +39,6 @@ const experienceData = [
 ];
 
 const Experience = () => {
-  const { theme } = useTheme();
 
   return (
     <motion.div

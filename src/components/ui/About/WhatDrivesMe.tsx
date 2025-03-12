@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Code, Rocket, Users, Brain, Target } from "lucide-react";
-import { useTheme } from "next-themes";
 
 const motivations = [
   {
@@ -38,8 +37,6 @@ const motivations = [
 ];
 
 const WhatDrivesMe = () => {
-  const { theme } = useTheme();
-
   return (
     <motion.div className="flex flex-col items-center justify-center text-foreground md:px-6 py-16">
       {/* Header */}
