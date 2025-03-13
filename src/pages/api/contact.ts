@@ -43,7 +43,7 @@ export default async function handler(
     // Admin Email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "ishant121003@gmail.com",
+      to: "ishant.devdesign@gmail.com",
       subject: "New Contact Form Submission",
       html: `
         <table
@@ -2691,7 +2691,7 @@ export default async function handler(
                                             font-size: 12px;
                                           "
                                           >
-                                          <a href="mailto:ishant121003@gmail.com">ishant121003@gmail.com</a></span
+                                          <a href="mailto:ishant.devdesign@gmail.com">ishant.devdesign@gmail.com</a></span
                                         >
                                       </p>
                                     </div>

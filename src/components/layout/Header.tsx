@@ -131,7 +131,7 @@ export default function Header() {
                 className="flex hover:underline items-center"
               >
                 <motion.div></motion.div>
-                <Link href="https://www.instagram.com/fluffyboi03/">
+                <Link href="https://www.instagram.com/ishant_dev_design/">
                   <motion.p className="flex items-center">
                     INSTAGRAM <ArrowRight className="h-4" />
                   </motion.p>
@@ -153,7 +153,7 @@ export default function Header() {
                 className="flex hover:underline items-center"
               >
                 <motion.div></motion.div>
-                <Link href="https://github.com/ishant010301">
+                <Link href="https://github.com/ishant-dev-design">
                   <motion.p className="flex items-center">
                     GITHUB <ArrowRight className="h-4" />
                   </motion.p>
@@ -164,7 +164,7 @@ export default function Header() {
                 className="flex hover:underline items-center"
               >
                 <motion.div></motion.div>
-                <Link href="https://www.behance.net/ishantkumar1">
+                <Link href="https://www.behance.net/ishant-dev-design">
                   <motion.p className="flex items-center">
                     BEHANCE <ArrowRight className="h-4" />
                   </motion.p>
@@ -175,7 +175,7 @@ export default function Header() {
                 className="flex hover:underline items-center"
               >
                 <motion.div></motion.div>
-                <Link href="https://t.me/fluffyboi01">
+                <Link href="https://t.me/ishant_devdesign">
                   <motion.p className="flex items-center">
                     TELEGRAM <ArrowRight className="h-4" />
                   </motion.p>
@@ -238,8 +238,10 @@ export default function Header() {
                 <motion.div className="px-1">
                   <Mailbox />
                 </motion.div>
-                <Link href="mailto:ishant121003@gmail.com">
-                  <motion.p className="px-1">ishant121003@gmail.com</motion.p>
+                <Link href="mailto:ishant.devdesign@gmail.com">
+                  <motion.p className="px-1">
+                    ishant.devdesign@gmail.com
+                  </motion.p>
                 </Link>
               </motion.div>
             </motion.div>
