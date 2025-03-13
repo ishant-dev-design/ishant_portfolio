@@ -28,7 +28,6 @@ type CursorType = keyof typeof cursorStyles;
 
 export const CursorProvider = ({ children }: { children: ReactNode }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [customContent, setCustomContent] = useState<ReactNode | null>(null);
   const [cursorDotClassName] = useState("");
   const [cursorType, setCursorType] = useState<CursorType>("default");
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -41,10 +40,6 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
       hideNativeCursor();
     }
   }, []);
-
-  useEffect(() => {
-    setCustomContent(cursorStyles[cursorType] ? null : null);
-  }, [cursorType]);
 
   useEffect(() => {
     if (isTouchDevice) return;
