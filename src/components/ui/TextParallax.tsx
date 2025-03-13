@@ -76,7 +76,7 @@ const Slide = ({ src, text, direction, speed, progress }: SlideProps) => {
   return (
     <motion.div
       style={{ x }}
-      className="relative flex whitespace-nowrap justify-center"
+      className="relative flex whitespace-nowrap justify-center hover:text-accent"
     >
       <Phrase src={src} text={text} />
       <Phrase src={src} text={text} />

@@ -16,11 +16,6 @@ const faqs = [
       "Yes! I'm available for freelance work and open to discussing new projects. Feel free to reach out via my contact form or email to discuss your project details.",
   },
   {
-    question: "Do you contribute to open-source projects?",
-    answer:
-      "Absolutely! I actively contribute to open-source projects, and you can check out my GitHub to see my latest work and contributions.",
-  },
-  {
     question: "What kind of projects do you work on?",
     answer:
       "I work on a variety of projects, including portfolio websites, interactive UI/UX experiences, web applications, and performance-optimized frontends.",
@@ -78,7 +73,8 @@ const FAQSection = () => {
             }}
             onClick={() => toggleFAQ(index)}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="py-4 cursor-pointer"
+            className="py-4"
+            data-cursor="pointer"
           >
             <div className="flex justify-between items-center">
               <motion.h3 className="text-lg font-semibold flex items-center">

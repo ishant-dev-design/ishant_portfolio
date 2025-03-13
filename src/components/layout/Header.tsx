@@ -94,7 +94,10 @@ export default function Header() {
                     href={item.href}
                     className="text-foreground w-full"
                   >
-                    <div className="flex items-center mx-4">
+                    <div
+                      className="flex items-center mx-4"
+                      data-cursor="pointer"
+                    >
                       <TextPressure
                         className={`transition-all duration-300 bg-transparent items-center ${
                           pathname === item.href

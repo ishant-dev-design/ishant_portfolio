@@ -78,7 +78,8 @@ const BlogPage = ({ blog }: { blog: Blog }) => {
                 <a
                   href={`#${heading.id}`}
                   onClick={(e) => handleScroll(e, heading.id)}
-                  className="hover:text-accent cursor-pointer"
+                  className="hover:text-accent"
+                  data-cursor="pointer"
                 >
                   {heading.text}
                 </a>

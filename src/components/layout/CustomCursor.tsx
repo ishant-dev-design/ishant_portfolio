@@ -7,19 +7,16 @@ import {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-// Hide the native cursor globally
 const hideNativeCursor = () => {
   if (!("ontouchstart" in window)) {
     document.body.style.cursor = "none";
   }
 };
 
-// Cursor Context
 const CursorContext = createContext({
   setHoverElement: () => {},
 });
 
-// Cursor Styles
 const cursorStyles = {
   default: "bg-white rounded-full",
   text: "bg-white rounded-md !w-1 ml-2",
@@ -35,6 +32,7 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
   const [cursorDotClassName] = useState("");
   const [cursorType, setCursorType] = useState<CursorType>("default");
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [explode, setExplode] = useState(false);
 
   useEffect(() => {
     if ("ontouchstart" in window) {
@@ -53,8 +51,8 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
 
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      setExplode(false);
 
-      // Find the closest parent with data-cursor
       let element = e.target as HTMLElement | null;
       while (element && !element.hasAttribute("data-cursor")) {
         element = element.parentElement;
@@ -72,8 +70,22 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
       }
     };
 
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (!e.relatedTarget) {
+        setExplode(true);
+      }
+    };
+    const handleMouseEnter = () => setExplode(false);
+
     window.addEventListener("mousemove", updatePosition);
-    return () => window.removeEventListener("mousemove", updatePosition);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
+
+    return () => {
+      window.removeEventListener("mousemove", updatePosition);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+    };
   }, [isTouchDevice]);
 
   if (isTouchDevice) {
@@ -85,47 +97,54 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <CursorContext.Provider
-      value={{
-        setHoverElement: () => {},
-      }}
-    >
+    <CursorContext.Provider value={{ setHoverElement: () => {} }}>
       {children}
-      {/* Inner Dot */}
-      <motion.div
-        className={`fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference 
+      <AnimatePresence>
+        {!explode ? (
+          <motion.div
+            className={`fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference 
   ${cursorStyles[cursorType]} ${cursorDotClassName}`}
-        layout
-        animate={{
-          x: position.x - 8,
-          y: position.y - 8,
-          width: 16,
-          height: 16,
-        }}
-        transition={{
-          x: { duration: 0, ease: "linear" }, // Instant update
-          y: { duration: 0, ease: "linear" }, // Instant update
-          width: { duration: 0.3, ease: "easeOut" },
-          height: { duration: 0.3, ease: "easeOut" },
-          padding: { duration: 0.3, ease: "easeOut" },
-          backgroundColor: { duration: 0.3, ease: "easeOut" },
-          margin: { duration: 0.3, ease: "easeOut" },
-          opacity: { duration: 0.2, ease: "easeOut" },
-          borderRadius: { duration: 0.2, ease: "easeOut" },
-        }}
-      >
-        <AnimatePresence mode="wait">
-          {customContent && (
-            <motion.div
-              key={cursorType}
-              className="absolute flex items-center justify-center"
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              {customContent}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+            layout
+            animate={{
+              x: position.x - 8,
+              y: position.y - 8,
+              width: 16,
+              height: 16,
+              opacity: 1,
+            }}
+            transition={{
+              x: { duration: 0, ease: "linear" },
+              y: { duration: 0, ease: "linear" },
+              width: { duration: 0.3, ease: "easeOut" },
+              height: { duration: 0.3, ease: "easeOut" },
+              opacity: { duration: 0.3, ease: "easeOut" },
+            }}
+          />
+        ) : (
+          <motion.div
+            key="explosion"
+            className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference bg-white rounded-full"
+            initial={{
+              x: position.x - 8,
+              y: position.y - 8,
+              width: 16,
+              height: 16,
+              opacity: 1,
+            }}
+            animate={{
+              x: position.x - 50,
+              y: position.y - 50,
+              width: 100,
+              height: 100,
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: "circInOut",
+            }}
+          />
+        )}
+      </AnimatePresence>
     </CursorContext.Provider>
   );
 };

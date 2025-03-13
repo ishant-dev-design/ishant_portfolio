@@ -137,6 +137,7 @@ const ContactForm = () => {
         <div className="flex w-full justify-center items-center">
           <button
             type="submit"
+            data-cursor="pointer"
             className={`w-full px-6 py-3 flex justify-center items-center font-bold rounded-full ${buttonColor} text-[#101010] transition-all duration-300 ease-in-out text-md ${
               loading ? "!w-14 !px-3" : "w-full"
             }`}

@@ -81,6 +81,7 @@ export default function Projects() {
         Want a page like this?
         <Link
           href="/contact"
+          data-cursor="pointer"
           className="w-fit flex items-center justify-center text-accent hover:underline  md:text-8xl text-3xl mt-4"
         >
           Connect Now.

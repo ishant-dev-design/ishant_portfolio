@@ -65,14 +65,13 @@ const Hero = () => {
           >
             <h3 className="p-4 text-sm text-gray-500">Listen with me</h3>
             <div
-              data-cursor="spotify"
               className="px-4 pb-4 rounded-3xl relative flex items-center justify-center w-full h-full"
               onMouseEnter={() => document.body.classList.add("cursor-default")}
               onMouseLeave={() =>
                 document.body.classList.remove("cursor-default")
               }
             >
-              <div className="w-full h-full">
+              <div className="w-full h-full" data-cursor="spotify">
                 <iframe
                   className="w-full !rounded-2xl"
                   style={{ border: "none", height: "400px" }}
