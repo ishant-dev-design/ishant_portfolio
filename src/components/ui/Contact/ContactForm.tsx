@@ -72,6 +72,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="name"
+            data-cursor="text"
             value={formData.name}
             onChange={handleChange}
             placeholder="Your Name"
@@ -93,6 +94,7 @@ const ContactForm = () => {
           <input
             type="email"
             name="email"
+            data-cursor="text"
             value={formData.email}
             onChange={handleChange}
             placeholder="Your Email"
@@ -113,6 +115,7 @@ const ContactForm = () => {
         <div className="relative">
           <textarea
             name="message"
+            data-cursor="text"
             value={formData.message}
             onChange={handleChange}
             placeholder="Your Message"
