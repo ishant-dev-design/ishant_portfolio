@@ -35,7 +35,7 @@ export default function Header() {
       <button
         data-cursor="pointer"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-[1000] p-2.5 text-[#101010] text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
+        className="fixed top-4 right-4 z-[1000] p-2.5 text-background text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
       >
         <label className="hamburger">
           <input type="checkbox" checked={isOpen} readOnly className="hidden" />
@@ -71,13 +71,13 @@ export default function Header() {
             animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
             exit={{ clipPath: "inset(100% 0% 0% 0%)" }}
             transition={{ duration: 0.8, ease: [1, 0, 0, 1] }}
-            className="fixed gap-2 inset-0 bg-accent text-black z-[999] flex flex-col items-center justify-center tracking-tight"
+            className="fixed gap-2 inset-0 bg-accent text-background z-[999] flex flex-col items-center justify-center tracking-tight"
           >
             <div className="items-center md:w-full w-72 max-w-sm px-6 space-y-1">
               {navItems.map((item, index) => (
                 <motion.div
                   className={`rounded-3xl -mx-4 ${
-                    pathname === item.href ? "bg-[#232121]" : "bg-transparent"
+                    pathname === item.href ? "bg-background" : "bg-transparent"
                   }`}
                   key={item.href}
                   initial={{ opacity: 0, y: 30 }}
@@ -102,7 +102,7 @@ export default function Header() {
                         className={`transition-all duration-300 bg-transparent items-center ${
                           pathname === item.href
                             ? "!text-accent"
-                            : "!text-[#232121] "
+                            : "!text-background"
                         }`}
                         text={item.name}
                         flex={true}
@@ -123,7 +123,7 @@ export default function Header() {
 
             {/* Footer Links */}
             <motion.div
-              className="absolute bottom-3 left-3 md:bottom-6 md:left-6 text-xs text-[#101010]"
+              className="absolute bottom-3 left-3 md:bottom-6 md:left-6 text-xs text-background"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
@@ -217,7 +217,7 @@ export default function Header() {
 
             {/* Contact Info */}
             <motion.div
-              className="absolute bottom-3 right-3 md:bottom-6 md:right-6 text-xs text-black"
+              className="absolute bottom-3 right-3 md:bottom-6 md:right-6 text-xs text-background"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}

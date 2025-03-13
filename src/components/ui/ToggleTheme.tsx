@@ -26,7 +26,7 @@ const ThemeToggleGroup = () => {
           onClick={() => setTheme(value)}
           className={`flex items-center gap-1 px-4 py-2 rounded-full transition-colors ${
             theme === value || (theme === "system" && value === "system")
-              ? "bg-accent text-[#101010]"
+              ? "bg-accent text-background"
               : "text-foreground"
           }`}
         >

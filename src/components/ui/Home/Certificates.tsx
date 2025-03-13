@@ -58,7 +58,7 @@ const Certifications = () => {
                 </p>
                 <button
                   data-cursor="pointer"
-                  className="mt-4 px-4 py-2 bg-accent font-bold text-[#101010] rounded-lg hover:bg-opacity-80 transition"
+                  className="mt-4 px-4 py-2 bg-accent font-bold text-background rounded-lg hover:bg-opacity-80 transition"
                   onClick={() =>
                     router.push(`/certifications/${certification.slug}`)
                   }

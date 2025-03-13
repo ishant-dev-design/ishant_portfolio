@@ -132,7 +132,7 @@ const QuotesCarousel = () => {
                 clipPath: `inset(${100 - progress}% 0 0 0)`,
               }}
             >
-              <ArrowRight size={24} className="relative z-10 text-[#101010]" />
+              <ArrowRight size={24} className="relative z-10 text-background" />
             </motion.div>
           </button>
         </div>

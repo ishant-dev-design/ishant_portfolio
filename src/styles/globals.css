@@ -8,12 +8,12 @@
   /* Light Mode (Default) */
   --color-primary: #101010;
   --color-secondary: #3a3939;
-  --color-accent: #758cff;
+  --color-accent: #4b38f8;
   --color-background: #f5f3f0;
   --color-foreground: #101010;
   --color-textfield: #ffffff;
   --color-backgroundblur: #f5f3f066;
-  --color-accentblur: #758cff11;
+  --color-accentblur: #4b38f811;
   --color-borderclr: #e0e0e0;
 
   /* Typography */
@@ -71,7 +71,7 @@ body {
 
 .line {
   fill: none;
-  stroke: #232121; /* Adaptive Stroke Color */
+  stroke: var(--color-background); /* Adaptive Stroke Color */
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;

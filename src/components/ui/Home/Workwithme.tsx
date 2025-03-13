@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 // import Link from "next/link";
 // import { ArrowUpRight } from "lucide-react";
 
@@ -88,16 +90,16 @@ const Workwithme = () => {
         ))}
       </motion.div>
 
-      {/* <Link href="/portfolio" data-cursor="pointer">
+      <Link href="/resume" data-cursor="pointer">
         <motion.button
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="px-6 py-3 rounded-full bg-accent text-[#101010] text-lg font-medium flex items-center hover:bg-opacity-80 transition-all"
+          className="px-6 py-3 rounded-full bg-accent text-background text-lg font-medium flex items-center hover:bg-opacity-80 transition-all"
         >
-          View My Work <ArrowUpRight className="ml-2" />
+          Get my Resume <ArrowUpRight className="ml-2" />
         </motion.button>
-      </Link> */}
+      </Link>
     </motion.div>
   );
 };

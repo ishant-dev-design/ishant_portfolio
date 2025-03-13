@@ -22,7 +22,7 @@ export default function NotFound() {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="bg-accent text-[#101010] px-6 py-3 font-bold rounded-xl shadow-lg transition"
+            className="bg-accent text-background px-6 py-3 font-bold rounded-xl shadow-lg transition"
           >
             Back to Safe Waters
           </motion.button>
