@@ -71,32 +71,8 @@ Visit `http://localhost:3000` to see it live! 🎉
 
 ## 📊 GitHub Stats
 
-![Your GitHub Stats](https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=radical)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=your-username&layout=compact&theme=radical)
-
----
-
-## 🤔 FAQs (Fun + Puzzles!)
-
-<details>
-<summary>🕵️ How many pets do I have?</summary>
-Check out the Pets section to count them! 🐶
-</details>
-
-<details>
-<summary>🎨 What’s my favorite hobby?</summary>
-Can you guess it by looking at the Hobbies section? 🎮
-</details>
-
-<details>
-<summary>🤖 Which blog talks about the importance of microinteractions?</summary>
-Browse the blogs to find out! 🔍
-</details>
-
-<details>
-<summary>🎓 How many certificates do I have?</summary>
-Explore the Certifications section to find the answer! 🏆
-</details>
+![Your GitHub Stats](https://github-readme-stats.vercel.app/api?username=ishant-dev-design&show_icons=true&theme=radical)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ishant-dev-design&layout=compact&theme=radical)
 
 ---
 
