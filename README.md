@@ -4,10 +4,10 @@ Welcome to my portfolio! 🎉 I built this to showcase my work, certifications, 
 
 ---
 
-![GitHub Repo Size](https://img.shields.io/github/repo-size/your-username/your-repo-name)
-![GitHub Stars](https://img.shields.io/github/stars/your-username/your-repo-name?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/your-username/your-repo-name?style=social)
-![Visitors](https://visitor-badge.glitch.me/badge?page_id=your-username.your-repo-name)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/ishant-dev-design/ishant_portfolio)
+![GitHub Stars](https://img.shields.io/github/stars/ishant-dev-design/ishant_portfolio?style=social)
+![GitHub Forks](https://img.shields.io/github/forks/ishant-dev-design/ishant_portfolio?style=social)
+![Visitors](https://visitor-badge.glitch.me/badge?page_id=ishant-dev-design.ishant_portfolio)
 
 ---
 
