@@ -31,7 +31,6 @@ This portfolio is designed with:
 | 📝 Blogs           | Insights + experiences shared    |
 | 🏆 Certificates    | Achievements and recognitions    |
 | 🐾 Pets Page       | Pictures of my adorable pets     |
-| 🎮 Hobbies Section | Interactive hobbies with GIFs    |
 | 📧 Contact Form    | Get in touch easily              |
 
 ---
