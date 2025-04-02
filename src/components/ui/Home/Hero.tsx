@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import AnimatedHeading from "../AnimatedHeading";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -36,8 +37,10 @@ const Hero = () => {
     <section className="relative flex items-center justify-center min-h-screen pt-32">
       {/* Left Text */}
       <div className="w-full space-y-6">
-        <h1 className="text-5xl md:text-9xl md:-mt-12 mt-8 font-light text-accent leading-none flex flex-col md:flex-row flex-wrap md:items-center gap-4">
-          Hi, I&apos;m
+        <h1 className="text-8xl md:text-9xl md:-mt-12 mt-8 font-light text-accent leading-none flex flex-col md:flex-row flex-wrap md:items-center gap-4">
+          <AnimatedHeading className="flex justify-start">
+            Hi, I&apos;m
+          </AnimatedHeading>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1, rotate: -5 }}
@@ -54,7 +57,9 @@ const Hero = () => {
               className="w-20 md:w-32 aspect-square object-cover rounded-3xl"
             />
           </motion.div>
-          Ishant Kumar.
+          <AnimatedHeading className="flex justify-start">
+            Ishant Kumar.
+          </AnimatedHeading>
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 w-full pb-16 lg:pb-0">
