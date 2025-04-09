@@ -3,8 +3,8 @@ import { blogs } from "@/data/blogs";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { ArrowLeftCircle } from "lucide-react";
+import Link from "next/link";
 
 interface Blog {
   title: string;
