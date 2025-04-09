@@ -24,22 +24,28 @@ const educationData = [
 const experienceData = [
   {
     role: "Front-End Developer",
-    company: "ADS247365 India Pvt Ltd",
-    year: "Jan 2024 - Present",
+    company: "Airsea Travels LLC",
+    year: "Mar 2025 - Present",
     description:
-      "Developing and optimizing high-performance ReactJS applications, improving load times, and enhancing user experience.",
+      "Developing and optimizing web apps with ReactJS, NextJS, HTML, CSS, and JavaScript. Ensuring cross-browser/device compatibility and collaborating on API integration.",
+  },
+  {
+    role: "Front-End Developer",
+    company: "ADS247365 India Pvt Ltd",
+    year: "Jan 2024 - Feb 2025",
+    description:
+      "Worked with ReactJS, NodeJS, and NextJS to improve website load times, boost engagement, and refactor legacy code.",
   },
   {
     role: "Data Science Intern",
     company: "Placify Technologies",
     year: "2024",
     description:
-      "Worked on real-world projects using Python, SQL, and Power BI to analyze and visualize data-driven insights.",
+      "Worked on data analysis and visualization using Python, SQL, and Power BI.",
   },
 ];
 
 const Experience = () => {
-
   return (
     <motion.div
       className="h-fit flex justify-center items-center mb-12"

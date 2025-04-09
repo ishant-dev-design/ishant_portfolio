@@ -3,6 +3,8 @@ import { blogs } from "@/data/blogs";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowLeftCircle } from "lucide-react";
 
 interface Blog {
   title: string;
@@ -60,7 +62,15 @@ const BlogPage = ({ blog }: { blog: Blog }) => {
     <div className="max-w-7xl mx-auto">
       {/* Blog Title */}
       <motion.div className="flex flex-col pt-16 md:pt-24 pb-12 justify-center w-full">
-        <AnimatedHeading className="text-3xl md:text-5xl lg:text-8xl text-foreground text-center">
+        <Link
+          data-cursor="pointer"
+          href={"/blogs"}
+          className="bg-accent text-background px-4 py-2 rounded-full mt-2 flex items-center justify-center w-fit gap-4"
+        >
+          <ArrowLeftCircle />
+          <span className="text-sm">Back to Blog Home</span>
+        </Link>
+        <AnimatedHeading className="text-3xl md:text-5xl lg:text-8xl text-foreground text-center mt-4">
           {blog.title}
         </AnimatedHeading>{" "}
         <p className="text-accent mt-2">{blog.date}</p>
