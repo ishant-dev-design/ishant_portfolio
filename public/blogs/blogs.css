@@ -38,3 +38,8 @@ ul {
 li {
   margin-bottom: 15px;
 }
+.highlight {
+  background-color: #ffe580 !important;
+  padding: 0.1em 0.2em !important;
+  border-radius: 0.25em !important;
+}

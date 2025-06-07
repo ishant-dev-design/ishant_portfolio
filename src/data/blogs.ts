@@ -1,16 +1,28 @@
 import fs from "fs";
 import path from "path";
+import * as cheerio from "cheerio";
 
 const BLOGS_DIR = path.join(process.cwd(), "public/blogs");
 
 const getBlogContent = (slug: string) => {
   try {
-    return fs.readFileSync(path.join(BLOGS_DIR, `${slug}.html`), "utf-8");
+    const rawHtml = fs.readFileSync(path.join(BLOGS_DIR, `${slug}.html`), "utf-8");
+    const $ = cheerio.load(rawHtml);
+
+    // Attempt to extract only the body content
+    const body = $("body");
+    if (body.length > 0) {
+      return body.html() || "";
+    }
+
+    // Fallback: return the full HTML if no body tag is found
+    return rawHtml;
   } catch (error) {
     console.error(`Error reading blog ${slug}:`, error);
     return "";
   }
 };
+
 export const blogs = [
   {
     title: "The Art of Microinteractions in UX Design",
