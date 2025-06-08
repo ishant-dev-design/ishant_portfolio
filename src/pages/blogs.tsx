@@ -7,7 +7,6 @@ export async function getStaticProps() {
   return { props: { blogs } };
 }
 
-// Define an interface for blog posts
 interface Blog {
   title: string;
   slug: string;
@@ -24,7 +23,6 @@ const Blogs = ({ blogs }: { blogs: Blog[] }) => {
         </AnimatedHeading>
       </motion.div>
 
-      {/* 2x2 Grid for blogs */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
         {blogs.map((blog) => (
           <BlogCard
