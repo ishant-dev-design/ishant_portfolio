@@ -35,7 +35,12 @@ const BlogPage = ({ blog }: { blog: Blog }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [sentenceIndex, setSentenceIndex] = useState(0);
   const [progressWidth, setProgressWidth] = useState("0%");
-  const [pillPos, setPillPos] = useState({ top: 0, left: 0, width: 0, height: 0 });
+  const [pillPos, setPillPos] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0,
+  });
 
   const sentenceMapRef = useRef<{ el: HTMLElement; sentence: string }[]>([]);
   const animationTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -50,16 +55,18 @@ const BlogPage = ({ blog }: { blog: Blog }) => {
       if (voices.length > 0) {
         resolve(
           voices.find((v) => v.name.includes("Google US English")) ||
-          voices.find((v) => v.lang.startsWith("en")) ||
-          voices[0] || null
+            voices.find((v) => v.lang.startsWith("en")) ||
+            voices[0] ||
+            null
         );
       } else {
         window.speechSynthesis.onvoiceschanged = () => {
           const updatedVoices = window.speechSynthesis.getVoices();
           resolve(
             updatedVoices.find((v) => v.name.includes("Google US English")) ||
-            updatedVoices.find((v) => v.lang.startsWith("en")) ||
-            updatedVoices[0] || null
+              updatedVoices.find((v) => v.lang.startsWith("en")) ||
+              updatedVoices[0] ||
+              null
           );
         };
       }
@@ -68,70 +75,79 @@ const BlogPage = ({ blog }: { blog: Blog }) => {
 
   const prepareSentences = () => {
     sentenceMapRef.current = [];
-    const elements = blogRef.current?.querySelectorAll("h2, h3, h4, h5, h6, p, li, td, th") || [];
+    const elements =
+      blogRef.current?.querySelectorAll("h2, h3, h4, h5, h6, p, li, td, th") ||
+      [];
 
     elements.forEach((el) => {
       const sentences = splitIntoSentences(el.textContent || "");
-      sentenceMapRef.current.push(...sentences.map(sentence => ({ el: el as HTMLElement, sentence: sentence.trim() })));
+      sentenceMapRef.current.push(
+        ...sentences.map((sentence) => ({
+          el: el as HTMLElement,
+          sentence: sentence.trim(),
+        }))
+      );
     });
   };
 
   const highlightNextWord = async (el: HTMLElement, sentence: string) => {
-  const words = sentence.match(/\S+/g) || [];
-  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-  let currentNode: Text | null = null;
-  let nodeText = "";
-  let nodeOffset = 0;
+    const words = sentence.match(/\S+/g) || [];
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let currentNode: Text | null = null;
+    let nodeText = "";
+    let nodeOffset = 0;
 
-  const getNextTextNode = () => {
-    while (walker.nextNode()) {
-      const textNode = walker.currentNode as Text;
-      if (textNode.textContent?.trim()) return textNode;
-    }
-    return null;
-  };
+    const getNextTextNode = () => {
+      while (walker.nextNode()) {
+        const textNode = walker.currentNode as Text;
+        if (textNode.textContent?.trim()) return textNode;
+      }
+      return null;
+    };
 
-  currentNode = getNextTextNode();
-  nodeText = currentNode?.textContent ?? "";
+    currentNode = getNextTextNode();
+    nodeText = currentNode?.textContent ?? "";
 
-  for (const word of words) {
-    while (currentNode && nodeOffset >= nodeText.length) {
-      currentNode = getNextTextNode();
-      nodeOffset = 0;
-      nodeText = currentNode?.textContent ?? "";
-    }
-
-    if (!currentNode) break;
-
-    const wordRegex = new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`);
-    const match = wordRegex.exec(nodeText.slice(nodeOffset));
-
-    if (match) {
-      const start = nodeOffset + match.index;
-      const end = start + word.length;
-
-      const range = document.createRange();
-      range.setStart(currentNode, start);
-      range.setEnd(currentNode, end);
-
-      const rect = range.getBoundingClientRect();
-      if (rect.width > 0 && rect.height > 0) {
-        setPillPos({
-          top: rect.top + window.scrollY,
-          left: rect.left + window.scrollX,
-          width: rect.width,
-          height: rect.height,
-        });
+    for (const word of words) {
+      while (currentNode && nodeOffset >= nodeText.length) {
+        currentNode = getNextTextNode();
+        nodeOffset = 0;
+        nodeText = currentNode?.textContent ?? "";
       }
 
-      nodeOffset = end;
+      if (!currentNode) break;
+
+      const wordRegex = new RegExp(
+        `\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`
+      );
+      const match = wordRegex.exec(nodeText.slice(nodeOffset));
+
+      if (match) {
+        const start = nodeOffset + match.index;
+        const end = start + word.length;
+
+        const range = document.createRange();
+        range.setStart(currentNode, start);
+        range.setEnd(currentNode, end);
+
+        const rect = range.getBoundingClientRect();
+        if (rect.width > 0 && rect.height > 0) {
+          setPillPos({
+            top: rect.top + window.scrollY,
+            left: rect.left + window.scrollX,
+            width: rect.width,
+            height: rect.height,
+          });
+        }
+
+        nodeOffset = end;
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 200));
     }
+  };
 
-    await new Promise((resolve) => setTimeout(resolve, 200));
-  }
-};
-
-const speakSentence = async (index: number) => {
+  const speakSentence = async (index: number) => {
     const map = sentenceMapRef.current;
     if (index >= map.length) {
       setIsSpeaking(false);
@@ -171,12 +187,17 @@ const speakSentence = async (index: number) => {
       prepareSentences();
     }
 
-    const estimatedTotalTime = Math.max(blogRef.current?.textContent?.split(" ").length ?? 500, 500) * 0.4;
+    const estimatedTotalTime =
+      Math.max(blogRef.current?.textContent?.split(" ").length ?? 500, 500) *
+      0.4;
     const startTime = Date.now();
 
     animationTimerRef.current = setInterval(() => {
       const elapsed = Date.now() - startTime;
-      const percent = Math.min((elapsed / (estimatedTotalTime * 1000)) * 100, 100);
+      const percent = Math.min(
+        (elapsed / (estimatedTotalTime * 1000)) * 100,
+        100
+      );
       setProgressWidth(`${percent.toFixed(2)}%`);
       if (percent >= 100) clearInterval(animationTimerRef.current!);
     }, 100);

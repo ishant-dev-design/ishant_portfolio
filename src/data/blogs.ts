@@ -6,7 +6,10 @@ const BLOGS_DIR = path.join(process.cwd(), "public/blogs");
 
 const getBlogContent = (slug: string) => {
   try {
-    const rawHtml = fs.readFileSync(path.join(BLOGS_DIR, `${slug}.html`), "utf-8");
+    const rawHtml = fs.readFileSync(
+      path.join(BLOGS_DIR, `${slug}.html`),
+      "utf-8"
+    );
     const $ = cheerio.load(rawHtml);
 
     // Attempt to extract only the body content
