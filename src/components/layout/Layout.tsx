@@ -10,7 +10,7 @@ import { ThemeProvider } from "next-themes";
 import Squares from "./Square_BG";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const pathname = usePathname();
 
   useEffect(() => {
