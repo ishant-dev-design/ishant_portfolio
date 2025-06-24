@@ -79,11 +79,11 @@ const Hero = () => {
               <div className="w-full h-full" data-cursor="spotify">
                 <iframe
                   className="w-full !rounded-2xl spotify-iframe"
-                  src="https://open.spotify.com/embed/playlist/5ot1X8S8pP5B9luUISqD7n?utm_source=generator"
+                  src="https://open.spotify.com/embed/playlist/37i9dQZEVXcNheyb00KEzN?utm_source=generator&theme=0"
                   width="100%"
                   frameBorder="0"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
+                  loading="eager"
                   title="Spotify playlist: Listen with me"
                 />
               </div>
