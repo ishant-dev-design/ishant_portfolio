@@ -37,7 +37,7 @@ export default function Loading({ onLoaded }: LoadingProps) {
     setFactIndex(Math.floor(Math.random() * designFacts.length));
 
     const handleLoad = () => {
-      setTimeout(() => onLoaded(), 2500);
+      requestIdleCallback(() => onLoaded());
     };
 
     if (document.readyState === "complete") {
