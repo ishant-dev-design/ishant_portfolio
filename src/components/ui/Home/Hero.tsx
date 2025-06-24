@@ -27,7 +27,7 @@ const Hero = () => {
           width={300}
           height={300}
           loading="lazy"
-          className="rounded-xl w-full h-full object-cover overflow-visible"
+          className="rounded-xl w-full h-full object-cover"
         />
       </motion.div>
     );
@@ -68,7 +68,7 @@ const Hero = () => {
             transition={{ duration: 0.3 }}
             className={`flex sm:col-span-2 flex-col bg-backgroundblur justify-between rounded-3xl border border-borderclr overflow-hidden backdrop-blur-sm`}
           >
-            <h3 className="p-4 text-sm text-gray-500">Listen with me</h3>
+            <h3 className="p-4 text-sm text-gray-300">Listen with me</h3>
             <div
               className="px-4 pb-4 rounded-3xl relative flex items-center justify-center w-full h-full"
               onMouseEnter={() => document.body.classList.add("cursor-default")}
@@ -78,14 +78,13 @@ const Hero = () => {
             >
               <div className="w-full h-full" data-cursor="spotify">
                 <iframe
-                  className="w-full !rounded-2xl"
-                  style={{ border: "none", height: "400px" }}
+                  className="w-full !rounded-2xl spotify-iframe"
                   src="https://open.spotify.com/embed/playlist/5ot1X8S8pP5B9luUISqD7n?utm_source=generator"
                   width="100%"
                   frameBorder="0"
-                  allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
+                  title="Spotify playlist: Listen with me"
                 />
               </div>
             </div>
@@ -96,11 +95,11 @@ const Hero = () => {
             className={`flex flex-col bg-backgroundblur justify-between rounded-3xl border border-borderclr overflow-hidden backdrop-blur-sm`}
           >
             <div className="p-4">
-              <h3 className="text-sm text-gray-500">What I&apos;m reading</h3>
+              <h3 className="text-sm text-gray-300">What I&apos;m reading</h3>
               <p className="mt-2 font-medium text-accent">
                 30 DAYS: Change your habits, Change your life
               </p>
-              <p className="mt-2 text-xs text-gray-500">Marc Reklau</p>
+              <p className="mt-2 text-xs text-gray-300">Marc Reklau</p>
             </div>
 
             {/* Parallax Effect */}
@@ -112,7 +111,7 @@ const Hero = () => {
             transition={{ duration: 0.3 }}
             className={`flex flex-col bg-backgroundblur justify-between rounded-3xl border border-borderclr overflow-hidden backdrop-blur-sm`}
           >
-            <h3 className="p-4 text-sm text-gray-500">Map</h3>
+            <h3 className="p-4 text-sm text-gray-300">Map</h3>
             <div className="h-full relative overflow-hidden bg-accent">
               <Image
                 src={`${
@@ -130,7 +129,7 @@ const Hero = () => {
             <div className="absolute p-4 bottom-0">
               <p className="mt-2 font-medium text-3xl text-accent">Faridabad</p>
               <p className=" font-medium text-accent">Haryana, India</p>
-              <p className="mt-2 text-xs text-gray-500">
+              <p className="mt-2 text-xs text-gray-300">
                 28.395403° N, 77.315292° E
               </p>
             </div>

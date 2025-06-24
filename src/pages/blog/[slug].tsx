@@ -244,7 +244,7 @@ const BlogPage = ({ blog }: { blog: Blog }) => {
   return (
     <div className="max-w-7xl mx-auto relative">
       <motion.div className="flex flex-col pt-16 md:pt-24 pb-12 w-full">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-4">
           <Link
             href="/blogs"
             className="bg-accent text-background pl-2 pr-4 py-2 rounded-full flex items-center gap-4 border border-accent hover:bg-background hover:text-accent"

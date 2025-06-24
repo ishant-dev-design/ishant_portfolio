@@ -1,10 +1,11 @@
+// lib/blogs.ts
 import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
 
 const BLOGS_DIR = path.join(process.cwd(), "public/blogs");
 
-const getBlogContent = (slug: string) => {
+const getBlogContent = (slug: string): string => {
   try {
     const rawHtml = fs.readFileSync(
       path.join(BLOGS_DIR, `${slug}.html`),
@@ -12,17 +13,12 @@ const getBlogContent = (slug: string) => {
     );
     const $ = cheerio.load(rawHtml);
 
-    // Attempt to extract only the body content
-    const body = $("body");
-    if (body.length > 0) {
-      return body.html() || "";
-    }
-
-    // Fallback: return the full HTML if no body tag is found
-    return rawHtml;
+    // Grab body content as HTML
+    const bodyHtml = $("body").html();
+    return bodyHtml || rawHtml;
   } catch (error) {
-    console.error(`Error reading blog ${slug}:`, error);
-    return "";
+    console.error(`Error reading blog "${slug}":`, error);
+    return "<p>Failed to load blog content.</p>";
   }
 };
 

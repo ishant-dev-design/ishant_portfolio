@@ -118,12 +118,16 @@ const QuotesCarousel = () => {
           <button
             onClick={() => handleClick("prev")}
             className="p-6 rounded-full bg-transparent w-fit flex justify-center border border-accent text-accent"
+            title="Previous Quote"
+            aria-label="Previous Quote"
           >
             <ArrowLeft size={24} />
           </button>
           <button
             onClick={() => handleClick("next")}
             className="p-6 rounded-full bg-transparent relative w-fit flex justify-center border border-accent"
+            title="Next Quote"
+            aria-label="Next Quote"
           >
             <ArrowRight size={24} className="relative z-0 text-accent" />
             <motion.div

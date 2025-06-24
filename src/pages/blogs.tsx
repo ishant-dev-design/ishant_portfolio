@@ -23,7 +23,7 @@ const Blogs = ({ blogs }: { blogs: Blog[] }) => {
         </AnimatedHeading>
       </motion.div>
 
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 select-none">
         {blogs.map((blog) => (
           <BlogCard
             key={blog.slug}

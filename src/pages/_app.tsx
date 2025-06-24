@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import CursorProvider from "@/components/layout/CustomCursor";
 import { useEffect } from "react";
 import Lenis from "lenis";
+import Head from "next/head";
 
 // 🔥 Create global accessor
 let globalLenis: Lenis | null = null;
@@ -38,12 +39,22 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <CursorProvider>
-      <Layout>
-        <AnimatePresence mode="wait">
-          <Component {...pageProps} key={pathname} />
-        </AnimatePresence>
-      </Layout>
-    </CursorProvider>
+    <>
+      <Head>
+        <title>Ishant's Portfolio</title>
+        <meta
+          name="description"
+          content="Explore Ishant's personal portfolio featuring projects, skills, and professional experience in web development and design."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <CursorProvider>
+        <Layout>
+          <AnimatePresence mode="wait">
+            <Component {...pageProps} key={pathname} />
+          </AnimatePresence>
+        </Layout>
+      </CursorProvider>
+    </>
   );
 }

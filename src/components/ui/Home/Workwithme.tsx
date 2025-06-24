@@ -76,7 +76,6 @@ const Workwithme = () => {
               alt={detail.heading}
               className="w-full !h-48 rounded-3xl object-cover"
               loading="lazy"
-              layout="responsive"
               width={100}
               height={100}
             />

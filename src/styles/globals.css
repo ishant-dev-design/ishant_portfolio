@@ -54,6 +54,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.spotify-iframe {
+  border: none;
+  height: 400px;
+}
+
 /* Hamburger Menu */
 .hamburger {
   cursor: pointer;

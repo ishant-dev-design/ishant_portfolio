@@ -8,7 +8,6 @@ import Footer from "@/components/layout/Footer";
 import Loading from "../ui/Loading";
 import { ThemeProvider } from "next-themes";
 import Squares from "./Square_BG";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -43,7 +42,6 @@ export default function Layout({ children }: { children: ReactNode }) {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
                 {children}
-                <SpeedInsights />
               </motion.main>
               <Footer />
             </>

@@ -1,3 +1,4 @@
+/* public/styles/blog.css */
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.8;
@@ -5,7 +6,9 @@ body {
   padding: 0;
 }
 .container {
+  max-width: 800px;
   margin: 0 auto;
+  padding: 2rem;
 }
 h1,
 h2,
@@ -29,7 +32,7 @@ pre {
   padding: 20px;
   border-radius: 10px;
   overflow-x: auto;
-  margin: 20px;
+  margin: 20px 0;
 }
 ul {
   font-size: 1.25rem;

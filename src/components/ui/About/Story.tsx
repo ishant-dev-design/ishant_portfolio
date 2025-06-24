@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Story = () => {
-
   return (
     <motion.div className="h-fit flex justify-center items-center">
       <motion.div
@@ -63,11 +63,16 @@ const Story = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          <motion.img
-            src="/images/profilepic2.jpg"
-            className="w-full pointer-events-none md:mt-24 h-full object-cover rounded-3xl transition-opacity duration-700 opacity-100 aspect-square"
-            loading="lazy"
-          />
+          <motion.div className="w-full h-full relative">
+            <Image
+              width={1000}
+              height={1000}
+              alt="Profile Picture"
+              priority
+              src="/images/profilepic2.jpg"
+              className="w-full pointer-events-none md:mt-24 h-full object-cover rounded-3xl transition-opacity duration-700 opacity-100 aspect-square"
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
     </motion.div>

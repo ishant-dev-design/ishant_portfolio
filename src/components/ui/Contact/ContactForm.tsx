@@ -81,6 +81,7 @@ const ContactForm = () => {
           {formData.name && (
             <button
               type="button"
+              title="Clear name"
               className="absolute right-3 rounded-full p-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white hover:bg-red-600"
               onClick={() => setFormData({ ...formData, name: "" })}
             >
@@ -103,6 +104,7 @@ const ContactForm = () => {
           {formData.email && (
             <button
               type="button"
+              title="Clear email"
               className="absolute right-3 rounded-full p-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white hover:bg-red-600"
               onClick={() => setFormData({ ...formData, email: "" })}
             >
@@ -125,6 +127,7 @@ const ContactForm = () => {
           {formData.message && (
             <button
               type="button"
+              title="Clear message"
               className="absolute right-3 rounded-full p-2 top-8 transform -translate-y-1/2 text-gray-500 hover:text-white hover:bg-red-600"
               onClick={() => setFormData({ ...formData, message: "" })}
             >

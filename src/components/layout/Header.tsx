@@ -38,7 +38,13 @@ export default function Header() {
         className="fixed top-4 right-4 z-[1000] p-2.5 text-background text-sm font-bold transition-all pointer-events-auto flex items-center gap-2 rounded-full bg-accent"
       >
         <label className="hamburger">
-          <input type="checkbox" checked={isOpen} readOnly className="hidden" />
+          <input
+            type="checkbox"
+            checked={isOpen}
+            readOnly
+            className="hidden"
+            aria-label="Toggle menu"
+          />
           <svg viewBox="0 0 32 32" className="w-6 pointer-events-none">
             <path
               className="line line-top-bottom fill-background"

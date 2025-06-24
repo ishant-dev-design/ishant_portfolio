@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // ✅ Enable source maps in production
+  productionBrowserSourceMaps: true,
+
   webpack: (config) => {
     config.module.rules.push({
       test: /\.html$/,
@@ -8,6 +11,7 @@ const nextConfig: NextConfig = {
     });
     return config;
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },

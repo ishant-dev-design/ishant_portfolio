@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"; // Import useRouter for navigation
 import { motion } from "framer-motion";
 import { certifications } from "@/data/certifications"; // Import certifications
+import Image from "next/image";
 
 const Certifications = () => {
   const router = useRouter(); // Initialize router
@@ -44,12 +45,18 @@ const Certifications = () => {
               className="rounded-3xl h-full pb-6"
             >
               <motion.div className="flex flex-col items-center text-center">
-                <motion.img
-                  src={certification.image}
-                  alt={certification.name}
-                  className="w-full h-64 object-cover rounded-lg mb-4"
-                  loading="lazy"
-                />
+                <motion.div className="w-full h-64 relative mb-4">
+                  <Image
+                    src={certification.image}
+                    alt={certification.name}
+                    title={certification.name}
+                    width={800}
+                    height={400}
+                    loading="lazy"
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                </motion.div>
+
                 <h3 className="text-xl font-semibold text-primary">
                   {certification.name}
                 </h3>
