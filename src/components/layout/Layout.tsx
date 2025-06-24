@@ -10,7 +10,7 @@ import { ThemeProvider } from "next-themes";
 import Squares from "./Square_BG";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -20,11 +20,11 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
       <div className="flex flex-col min-h-screen bg-background font-sans">
-        {/* <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           {loading && (
             <Loading key="loading" onLoaded={() => setLoading(false)} />
           )}
-        </AnimatePresence> */}
+        </AnimatePresence>
 
         <AnimatePresence mode="wait">
           {!loading && (
