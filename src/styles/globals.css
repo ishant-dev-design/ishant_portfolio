@@ -155,6 +155,10 @@ body {
   background: transparent;
 }
 
+[data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
 .blog_box {
   html {
     scroll-behavior: smooth;

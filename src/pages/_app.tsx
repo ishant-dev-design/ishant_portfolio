@@ -23,7 +23,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       infinite: false,
     });
 
-    // 🔐 Save it globally
     globalLenis = lenis;
 
     function raf(time: number) {
