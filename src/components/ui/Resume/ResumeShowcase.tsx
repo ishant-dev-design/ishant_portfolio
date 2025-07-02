@@ -16,7 +16,7 @@ const ResumeShowcase = () => {
         <Image
           width={1000}
           height={1000}
-          src="/images/resume.png"
+          src="/images/resume.jpg"
           alt="Resume"
           priority
           className="object-cover rounded-xl mx-auto mb-12"
